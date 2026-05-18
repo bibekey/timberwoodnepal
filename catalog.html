@@ -1,0 +1,6711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TimberWood | Catalog</title>
+<link rel="icon" href="img/home/LOGO.png" type="image/x-icon">   <!-- font icons -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0f0f0f;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* =========================
+NAVBAR
+========================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:75px;
+
+    background:rgba(0,0,0,.9);
+    backdrop-filter:blur(10px);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 5%;
+    z-index:999;
+}
+
+.logo img{
+    height:40px;
+    width:auto;
+    display:block;
+}
+
+.logo span{
+    color:#c89b63;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+nav ul li a{
+    color:#fff;
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#c89b63;
+}
+
+.menu-btn{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+    min-height:55vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    text-align:center;
+
+    padding:120px 20px 60px;
+
+    background:
+    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+    url('BED/BED (1).png');
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero h1{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    max-width:700px;
+    line-height:1.8;
+    opacity:.8;
+}
+
+/* =========================
+FILTERS
+========================= */
+
+.filters{
+    display:flex;
+    gap:12px;
+
+    overflow-x:auto;
+    scrollbar-width:none;
+
+    padding:25px 5%;
+
+    background:#111;
+
+    position:sticky;
+    top:75px;
+    z-index:99;
+}
+
+.filters::-webkit-scrollbar{
+    display:none;
+}
+
+.filter-btn{
+    min-width:max-content;
+
+    padding:12px 22px;
+
+    border:none;
+    border-radius:50px;
+
+    background:#1d1d1d;
+    color:#fff;
+
+    cursor:pointer;
+    transition:.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+    background:#c89b63;
+    color:#000;
+}
+
+/* =========================
+CATALOG GRID
+========================= */
+
+.catalog{
+    padding:40px 5% 80px;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+/* =========================
+CARD
+========================= */
+
+.card{
+    background:#181818;
+
+    border-radius:22px;
+    overflow:hidden;
+
+    position:relative;
+
+    transition:.4s;
+    cursor:pointer;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card:active{
+    transform:scale(.98);
+}
+
+.card-image{
+    position:relative;
+    overflow:hidden;
+}
+
+.card img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+
+    display:block;
+    transition:.5s;
+}
+
+.card:hover img{
+    transform:scale(1.08);
+}
+
+/* OVERLAY */
+
+.overlay{
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+    to top,
+    rgba(0,0,0,.35),
+    rgba(0,0,0,0)
+    );
+
+    opacity:0;
+    transition:.4s;
+}
+
+.card:hover .overlay{
+    opacity:1;
+}
+
+/* WISHLIST */
+
+.wishlist{
+    position:absolute;
+    top:15px;
+    right:15px;
+
+    width:42px;
+    height:42px;
+
+    background:rgba(0,0,0,.5);
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    z-index:10;
+
+    backdrop-filter:blur(10px);
+
+    font-size:20px;
+}
+
+/* CONTENT */
+
+.content{
+    padding:18px;
+}
+
+.content h3{
+    margin-bottom:8px;
+}
+
+.content p{
+    opacity:.7;
+    font-size:14px;
+}
+
+/* =========================
+IMAGE VIEWER
+========================= */
+
+.viewer{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.97);
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    z-index:9999;
+
+    overflow:hidden;
+}
+
+.viewer.active{
+    display:flex;
+}
+
+.viewer-slider{
+    display:flex;
+    width:100%;
+    height:100%;
+    transition:transform .4s ease;
+}
+
+.viewer-slide{
+    min-width:100%;
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+}
+
+.viewer-slide img{
+    width:100%;
+    max-width:1100px;
+    max-height:90vh;
+
+    object-fit:contain;
+
+    border-radius:18px;
+
+    user-select:none;
+    pointer-events:none;
+}
+
+/* CLOSE */
+
+.close{
+    position:absolute;
+    top:20px;
+    right:25px;
+
+    font-size:45px;
+    cursor:pointer;
+
+    z-index:999;
+}
+
+/* BUTTONS */
+
+.prev,
+.next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+
+    width:55px;
+    height:55px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,255,255,.12);
+    color:#fff;
+
+    font-size:28px;
+    cursor:pointer;
+
+    z-index:999;
+
+    backdrop-filter:blur(10px);
+}
+
+.prev{
+    left:20px;
+}
+
+.next{
+    right:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .viewer-slide{
+        padding:10px;
+    }
+
+    .viewer-slide img{
+        max-height:80vh;
+    }
+
+    .prev,
+    .next{
+        width:42px;
+        height:42px;
+        font-size:20px;
+    }
+
+    .close{
+        font-size:36px;
+    }
+
+}
+
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+    background:#0b0b0b;
+    padding:70px 5% 30px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:40px;
+}
+
+footer h2{
+    margin-bottom:18px;
+}
+
+footer p,
+footer li{
+    opacity:.7;
+    line-height:1.9;
+    list-style:none;
+}
+
+footer input{
+    width:100%;
+    padding:14px;
+
+    border:none;
+    border-radius:12px;
+
+    margin:15px 0;
+}
+
+footer button{
+    padding:13px 24px;
+
+    border:none;
+    border-radius:12px;
+
+    background:#c89b63;
+    color:#000;
+
+    font-weight:600;
+    cursor:pointer;
+}
+
+.bottom{
+    margin-top:50px;
+    padding-top:25px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+
+    opacity:.7;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+    .menu-btn{
+        display:block;
+    }
+
+    nav ul{
+        position:absolute;
+        top:75px;
+        left:-100%;
+
+        width:100%;
+
+        background:#111;
+
+        flex-direction:column;
+        padding:30px;
+
+        transition:.4s;
+    }
+
+    nav ul.active{
+        left:0;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .catalog{
+        grid-template-columns:1fr;
+    }
+
+    .card img{
+        height:260px;
+    }
+
+    .prev,
+    .next{
+        width:45px;
+        height:45px;
+        font-size:20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+    <img src="img/home/LOGO.png" alt="TimberWood Logo">
+</div>
+
+<div class="menu-btn" id="menuBtn">
+☰
+</div>
+<ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>Luxury Furniture Catalog</h1>
+
+<p>
+Modern premium wooden furniture collection for
+bedroom, living room, dining and office.
+</p>
+
+</section>
+
+<!-- FILTERS -->
+
+<div class="filters">
+
+<button class="filter-btn active" data-filter="all">
+All
+</button>
+
+<button class="filter-btn" data-filter="bed">
+Bed
+</button>
+
+<button class="filter-btn" data-filter="center">
+Center Table
+</button>
+
+<button class="filter-btn" data-filter="sofa">
+Sofa
+</button>
+
+<button class="filter-btn" data-filter="wardrobe">
+Wardrobe
+</button>
+
+<button class="filter-btn" data-filter="tv">
+TV Cabinet
+</button>
+
+<button class="filter-btn" data-filter="console">
+Console Table
+</button>
+
+<button class="filter-btn" data-filter="dining">
+Dining Table
+</button>
+
+<button class="filter-btn" data-filter="dressing">
+Dressing Table
+</button>
+
+<button class="filter-btn" data-filter="office">
+Office Table
+</button>
+
+<button class="filter-btn" data-filter="shoe">
+Shoe Rack
+</button>
+
+</div>
+
+<!-- CATALOG -->
+
+<div class="catalog">
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (1).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (4).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (5).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (6).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (7).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (8).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (9).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (10).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (11).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (12).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (13).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (14).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (15).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (16).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (17).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (18).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (19).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (20).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (21).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (22).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (23).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (24).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (25).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (26).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (27).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (28).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (29).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (30).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (31).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (32).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (33).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (34).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (35).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (36).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (37).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (38).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (39).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (40).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (41).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (42).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (43).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (44).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (45).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (46).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (47).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (48).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (49).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card bed"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/BED/BED (50).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- BED CARD END -->
+
+
+
+
+<!-- CENTER TABLE CARD START -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (1).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (4).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (5).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (6).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (7).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (8).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (9).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (10).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (11).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (12).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (13).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (14).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (15).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (16).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (17).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (18).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (19).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card center"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CENTER TABLE/CENTER TABLE (20).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!--CENTER TABLE CARD END-->
+
+
+<!--SOFA SETS CARD START -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (1).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (4).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (5).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (6).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (7).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (8).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (9).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (10).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (11).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (12).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (13).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (14).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (15).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (16).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (17).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (18).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (19).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (20).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (21).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (22).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (23).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (24).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (25).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (26).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (27).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (28).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (29).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card sofa"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SOFA SETS/SOFA SETS (30).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!--SOFA SETS CARD END -->
+
+
+
+<!--WARDROBE CARD START -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (1).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (4).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (5).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (6).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (7).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (8).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (9).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (10).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (11).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (12).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (13).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (14).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (15).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (16).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (17).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (18).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (19).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card wardrobe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/WARDROBE/WARDROBE (20).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- WARDROBE CARD END -->
+
+
+
+<!--TV CABINET CARD START -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (1).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (4).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (5).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (6).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (7).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (8).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (9).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (10).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (11).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (12).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (13).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (14).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (15).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (16).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (17).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (18).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (19).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card tv"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/TV CABINET/TV CABINET (20).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern wooden bedroom collection.</p>
+</div>
+
+</div>
+
+<!-- TV CABINE CARD END -->
+
+
+
+<!--CONSOLE TABLE CARD START -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (1).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (4).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (5).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (6).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (7).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (8).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (9).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (10).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (11).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (12).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (13).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (14).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (15).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (16).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (17).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (18).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (19).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card console"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/CONSOLE TABLE/CONSOLE TABLE (20).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern console collection.</p>
+</div>
+
+</div>
+
+<!-- CONSOLE TABLE CARD END -->
+
+
+
+
+
+<!--DINING TABLE CARD START -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (1).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (4).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (5).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (6).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (7).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (8).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (9).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (10).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (11).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (12).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (13).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (14).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (15).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (16).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (17).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (18).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (19).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dining"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DINING TABLE/DINING TABLE (20).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dining table collection.</p>
+</div>
+
+</div>
+
+<!-- DINING TABLE CARD END -->
+
+
+
+
+
+<!--DRESSING TABLE CARD START -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (1).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (4).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (5).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (6).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (7).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (8).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (9).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (10).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (11).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (12).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (13).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (14).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (15).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (16).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (17).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (18).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (19).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card dressing"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/DRESSING TABLE/DRESSING TABLE (20).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Bed</h3>
+<p>Modern dressing table collection.</p>
+</div>
+
+</div>
+
+<!-- DRESSING TABLE CARD END -->
+
+
+
+
+
+<!--OFFICE TABLE CARD START -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (1).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (4).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (5).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (6).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (7).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (8).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (9).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (10).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (11).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (12).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (13).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (14).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (15).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (16).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (17).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (18).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (19).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card office"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/OFFICE TABLE/OFFICE TABLE (20).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Office Table</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- OFFICE TABLE CARD END -->
+
+
+
+
+
+<!--OFFICE TABLE CARD START -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (1).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Premium Bed</h3>
+<p>Elegant interior furniture design.</p>
+</div>
+
+</div>
+
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (2).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (3).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (4).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (5).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (6).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (7).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (8).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (9).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (10).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (11).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (12).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (13).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (14).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (15).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (16).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (17).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (18).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (19).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- CARD -->
+
+<div class="card shoe"
+onclick="openViewer(this.querySelector('img').src)">
+
+<div class="wishlist">♡</div>
+
+<div class="card-image">
+
+<img src="img/SHOE RACK/SHOE RACK (20).png">
+
+<div class="overlay"></div>
+
+</div>
+
+<div class="content">
+<h3>Luxury Shoe Rack</h3>
+<p>Modern office table collection.</p>
+</div>
+
+</div>
+
+<!-- OFFICE TABLE CARD END -->
+
+
+
+
+
+</div>
+
+<!-- IMAGE VIEWER -->
+
+<div class="viewer" id="viewer">
+
+    <div class="close" onclick="closeViewer()">
+        ×
+    </div>
+
+    <button class="prev" onclick="prevImage()">
+        ❮
+    </button>
+
+    <div class="viewer-slider" id="viewerSlider">
+    </div>
+
+    <button class="next" onclick="nextImage()">
+        ❯
+    </button>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+
+<h2>Newsletter</h2>
+
+<p>
+Get latest furniture updates and offers.
+</p>
+
+<input type="email" placeholder="Enter email">
+
+<button>Subscribe</button>
+
+</div>
+
+<div>
+
+<h2>Showroom</h2>
+
+<p>
+Biratnagar Main Road<br><br>
+Sunday - Friday<br><br>
+9705020251
+</p>
+
+</div>
+
+<div>
+
+<h2>Useful Links</h2>
+
+<ul>
+<li>About Us</li>
+<li>Portfolio</li>
+<li>Contact</li>
+<li>Blog</li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="bottom">
+
+<div>
+© 2026 TimberWood Pvt Ltd
+</div>
+
+<div>
+Privacy Policy | Terms
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+/* =========================
+MOBILE MENU
+========================= */
+
+const menuBtn = document.getElementById('menuBtn');
+const navMenu = document.querySelector('nav ul');
+
+menuBtn.onclick = () =>{
+    navMenu.classList.toggle('active');
+};
+
+/* =========================
+FILTER
+========================= */
+
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.card');
+
+filterBtns.forEach(btn=>{
+
+    btn.addEventListener('click',()=>{
+
+        document
+        .querySelector('.filter-btn.active')
+        .classList.remove('active');
+
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+
+        cards.forEach(card=>{
+
+            if(filter === 'all'){
+                card.style.display='block';
+            }
+            else if(card.classList.contains(filter)){
+                card.style.display='block';
+            }
+            else{
+                card.style.display='none';
+            }
+
+        });
+
+    });
+
+});
+
+/* =========================
+IMAGE VIEWER
+========================= */
+
+const viewer = document.getElementById('viewer');
+const viewerSlider = document.getElementById('viewerSlider');
+
+/* AUTO GET ALL IMAGES */
+
+const images = [];
+
+document.querySelectorAll('.card img').forEach(img=>{
+
+    images.push(img.src);
+
+});
+
+/* CREATE SLIDES */
+
+images.forEach(src=>{
+
+    viewerSlider.innerHTML += `
+    
+    <div class="viewer-slide">
+        <img src="${src}">
+    </div>
+    
+    `;
+
+});
+
+let currentIndex = 0;
+
+/* OPEN */
+
+function openViewer(src){
+
+    currentIndex = images.indexOf(
+        new URL(src, location.href).href
+    );
+
+    if(currentIndex < 0){
+        currentIndex = 0;
+    }
+
+    updateSlider();
+
+    viewer.classList.add('active');
+
+}
+
+/* CLOSE */
+
+function closeViewer(){
+
+    viewer.classList.remove('active');
+
+}
+
+/* UPDATE */
+
+function updateSlider(){
+
+    viewerSlider.style.transform =
+    `translateX(-${currentIndex * 100}%)`;
+
+}
+
+/* NEXT */
+
+function nextImage(){
+
+    currentIndex++;
+
+    if(currentIndex >= images.length){
+        currentIndex = 0;
+    }
+
+    updateSlider();
+
+}
+
+/* PREV */
+
+function prevImage(){
+
+    currentIndex--;
+
+    if(currentIndex < 0){
+        currentIndex = images.length - 1;
+    }
+
+    updateSlider();
+
+}
+
+/* =========================
+TOUCH SWIPE
+========================= */
+
+let startX = 0;
+
+/* MOBILE */
+
+viewer.addEventListener('touchstart',(e)=>{
+
+    startX = e.touches[0].clientX;
+
+});
+
+viewer.addEventListener('touchend',(e)=>{
+
+    let endX = e.changedTouches[0].clientX;
+
+    if(startX - endX > 50){
+        nextImage();
+    }
+
+    if(endX - startX > 50){
+        prevImage();
+    }
+
+});
+
+/* DESKTOP DRAG */
+
+let isDragging = false;
+
+viewer.addEventListener('mousedown',(e)=>{
+
+    isDragging = true;
+    startX = e.clientX;
+
+});
+
+viewer.addEventListener('mouseup',(e)=>{
+
+    if(!isDragging) return;
+
+    let endX = e.clientX;
+
+    if(startX - endX > 50){
+        nextImage();
+    }
+
+    if(endX - startX > 50){
+        prevImage();
+    }
+
+    isDragging = false;
+
+});
+
+/* KEYBOARD */
+
+document.addEventListener('keydown',(e)=>{
+
+    if(!viewer.classList.contains('active')) return;
+
+    if(e.key === 'ArrowRight'){
+        nextImage();
+    }
+
+    if(e.key === 'ArrowLeft'){
+        prevImage();
+    }
+
+    if(e.key === 'Escape'){
+        closeViewer();
+    }
+
+});
+
+/* CLICK OUTSIDE CLOSE */
+
+viewer.addEventListener('click',(e)=>{
+
+    if(e.target === viewer){
+        closeViewer();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

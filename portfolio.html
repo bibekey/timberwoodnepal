@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>TimberWood | Portfolio</title>
+<link rel="icon" href="img/home/LOGO.png" type="image/x-icon">   <!-- font icons -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0f0f0f;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:999;
+    background:rgba(10,10,10,.95);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 7%;
+}
+
+.logo img{
+    height:40px;
+    width:auto;
+    display:block;
+}
+
+.logo span{
+    color:#c89b63;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#c89b63;
+}
+
+.menu{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    height:70vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+    url('BED/BED (1).png') center/cover;
+
+    transform:scale(1.05);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    width:90%;
+    max-width:800px;
+}
+
+.hero h1{
+    font-size:70px;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#c89b63;
+}
+
+.hero p{
+    color:#ccc;
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* SECTION */
+
+.section{
+    padding:100px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.section-title span{
+    color:#c89b63;
+}
+
+.section-title p{
+    color:#aaa;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+}
+
+/* PORTFOLIO GRID */
+
+.portfolio-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.card{
+    position:relative;
+    overflow:hidden;
+    border-radius:24px;
+    background:#1a1a1a;
+    cursor:pointer;
+    transition:.4s;
+    border:1px solid rgba(255,255,255,.05);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    display:block;
+    transition:.6s;
+}
+
+.card:hover img{
+    transform:scale(1.08);
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,.9),transparent);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+
+    padding:30px;
+}
+
+.tag{
+    width:max-content;
+    background:#c89b63;
+    color:black;
+    font-size:12px;
+    font-weight:600;
+    padding:7px 16px;
+    border-radius:50px;
+    margin-bottom:14px;
+}
+
+.overlay h3{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.overlay p{
+    color:#ddd;
+    line-height:1.7;
+    font-size:15px;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:25px;
+    margin-top:70px;
+}
+
+.stat{
+    background:#181818;
+    border-radius:24px;
+    padding:40px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.stat h2{
+    font-size:48px;
+    color:#c89b63;
+    margin-bottom:10px;
+}
+
+.stat p{
+    color:#aaa;
+}
+
+/* TESTIMONIALS */
+
+.testimonials{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.testimonial{
+    background:#171717;
+    border-radius:24px;
+    padding:35px;
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.stars{
+    color:#c89b63;
+    font-size:22px;
+    margin-bottom:18px;
+}
+
+.testimonial p{
+    color:#ccc;
+    line-height:1.9;
+    margin-bottom:20px;
+}
+
+.client{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.client img{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.client h4{
+    font-size:18px;
+}
+
+.client span{
+    color:#999;
+    font-size:14px;
+}
+
+/* CTA */
+
+.cta{
+    background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+    url('SOFA SETS/SOFA SETS (5).png') center/cover;
+
+    border-radius:35px;
+    padding:90px 50px;
+    text-align:center;
+}
+
+.cta h2{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.cta p{
+    color:#ddd;
+    max-width:700px;
+    margin:auto;
+    line-height:1.9;
+    margin-bottom:35px;
+}
+
+.cta button{
+    background:#c89b63;
+    color:black;
+    border:none;
+    padding:16px 40px;
+    border-radius:60px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.cta button:hover{
+    transform:scale(1.05);
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:100px;
+    background:#090909;
+    padding:70px 7% 40px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:40px;
+}
+
+.footer-logo{
+    font-size:32px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.footer-logo span{
+    color:#c89b63;
+}
+
+.footer p{
+    color:#999;
+    line-height:1.8;
+}
+
+.footer h3{
+    margin-bottom:20px;
+}
+
+.footer ul{
+    list-style:none;
+}
+
+.footer ul li{
+    margin-bottom:14px;
+    color:#aaa;
+}
+
+.bottom{
+    margin-top:60px;
+    border-top:1px solid rgba(255,255,255,.08);
+    padding-top:25px;
+
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:20px;
+
+    color:#888;
+}
+
+/* LIGHTBOX */
+
+.lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.96);
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    z-index:99999;
+}
+
+.lightbox img{
+    max-width:95%;
+    max-height:90vh;
+    border-radius:20px;
+    object-fit:contain;
+}
+
+.close{
+    position:absolute;
+    top:25px;
+    right:35px;
+    font-size:40px;
+    color:white;
+    cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .menu{
+        display:block;
+    }
+
+    nav ul{
+        position:absolute;
+        top:80px;
+        left:0;
+        width:100%;
+
+        background:#111;
+        flex-direction:column;
+        text-align:center;
+
+        max-height:0;
+        overflow:hidden;
+
+        transition:.4s;
+    }
+
+    nav ul.active{
+        max-height:500px;
+        padding:20px 0;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .section-title h2{
+        font-size:34px;
+    }
+
+    .cta h2{
+        font-size:38px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero{
+        height:60vh;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .card img{
+        height:260px;
+    }
+
+    .overlay h3{
+        font-size:22px;
+    }
+
+    .cta{
+        padding:70px 25px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+    <img src="img/home/LOGO.png" alt="TimberWood Logo">
+</div>
+
+    <div class="menu" onclick="toggleMenu()">☰</div>
+
+    <ul id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+        <h1>Our <span>Portfolio</span></h1>
+
+        <p>
+            Discover luxury furniture collections crafted with modern design,
+            premium wood finishing, elegant interiors, and timeless comfort.
+        </p>
+    </div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section class="section">
+
+    <div class="section-title">
+        <h2>Featured <span>Projects</span></h2>
+
+        <p>
+            Explore our completed furniture designs and custom interior projects
+            built for homes, offices, hotels, and premium living spaces.
+        </p>
+    </div>
+
+    <div class="portfolio-grid">
+
+        <div class="card">
+            <img src="BED/BED (7).png" onclick="openImage(this.src)">
+
+            <div class="overlay">
+                <div class="tag">Luxury Bed</div>
+                <h3>Modern Bedroom</h3>
+                <p>
+                    Premium wooden bedroom setup with floating side tables
+                    and elegant lighting design.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="SOFA SETS/SOFA SETS (8).png" onclick="openImage(this.src)">
+
+            <div class="overlay">
+                <div class="tag">Living Room</div>
+                <h3>Luxury Sofa Interior</h3>
+                <p>
+                    Modern sofa collection crafted for comfort,
+                    beauty, and luxury interiors.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="DINING TABLE/DINING TABLE (6).png" onclick="openImage(this.src)">
+
+            <div class="overlay">
+                <div class="tag">Dining Setup</div>
+                <h3>Elegant Dining</h3>
+                <p>
+                    Minimal modern dining collection with premium
+                    wooden texture and aesthetic finishing.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="TV CABINET/TV CABINET (4).png" onclick="openImage(this.src)">
+
+            <div class="overlay">
+                <div class="tag">TV Cabinet</div>
+                <h3>Entertainment Space</h3>
+                <p>
+                    Modern TV cabinet setup with luxury wall panel
+                    and storage combination.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="CENTER TABLE/CENTER TABLE (12).png" onclick="openImage(this.src)">
+
+            <div class="overlay">
+                <div class="tag">Center Table</div>
+                <h3>Minimal Design</h3>
+                <p>
+                    Stylish center table collection for premium
+                    living room decoration.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="WARDROBE/WARDROBE (5).png" onclick="openImage(this.src)">
+
+            <div class="overlay">
+                <div class="tag">Wardrobe</div>
+                <h3>Storage Interior</h3>
+                <p>
+                    Elegant wardrobe design with spacious
+                    compartments and premium finishing.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+        <div class="stat">
+            <h2>500+</h2>
+            <p>Projects Completed</p>
+        </div>
+
+        <div class="stat">
+            <h2>10+</h2>
+            <p>Years Experience</p>
+        </div>
+
+        <div class="stat">
+            <h2>250+</h2>
+            <p>Happy Clients</p>
+        </div>
+
+        <div class="stat">
+            <h2>100%</h2>
+            <p>Premium Quality</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section class="section">
+
+    <div class="section-title">
+        <h2>Client <span>Reviews</span></h2>
+
+        <p>
+            Trusted by homeowners, interior designers,
+            and businesses across Nepal.
+        </p>
+    </div>
+
+    <div class="testimonials">
+
+        <div class="testimonial">
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                TimberWood delivered exactly what we imagined.
+                Premium finishing, luxury quality, and very professional service.
+            </p>
+
+            <div class="client">
+                <img src="SOFA SETS/SOFA SETS (2).png">
+
+                <div>
+                    <h4>Rahul Sharma</h4>
+                    <span>Home Owner</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="testimonial">
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                Best furniture company for custom designs.
+                Their craftsmanship and detailing are amazing.
+            </p>
+
+            <div class="client">
+                <img src="BED/BED (3).png">
+
+                <div>
+                    <h4>Sneha Karki</h4>
+                    <span>Interior Client</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="testimonial">
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                Beautiful modern furniture with luxury finishing.
+                Highly recommended for office and home interiors.
+            </p>
+
+            <div class="client">
+                <img src="OFFICE TABLE/OFFICE TABLE (5).png">
+
+                <div>
+                    <h4>Aayush Rai</h4>
+                    <span>Office Owner</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="section">
+
+    <div class="cta">
+
+        <h2>Let's Build Your Dream Interior</h2>
+
+        <p>
+            From modern furniture to luxury interiors,
+            TimberWood creates timeless spaces designed with beauty,
+            comfort, and premium craftsmanship.
+        </p>
+
+        <button>Start Your Project</button>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div class="footer">
+
+            <div class="footer-logo">
+                Timber<span>Wood</span>
+            </div>
+
+            <p>
+                Premium furniture and interior company delivering
+                luxury modern designs for homes and businesses.
+            </p>
+
+        </div>
+
+        <div class="footer">
+
+            <h3>Company</h3>
+
+            <ul>
+                <li>About Us</li>
+                <li>Services</li>
+                <li>Portfolio</li>
+                <li>Contact</li>
+            </ul>
+
+        </div>
+
+        <div class="footer">
+
+            <h3>Products</h3>
+
+            <ul>
+                <li>Luxury Beds</li>
+                <li>Sofa Sets</li>
+                <li>Dining Tables</li>
+                <li>TV Cabinets</li>
+            </ul>
+
+        </div>
+
+        <div class="footer">
+
+            <h3>Contact</h3>
+
+            <ul>
+                <li>Biratnagar, Nepal</li>
+                <li>9705020251</li>
+                <li>9807091947</li>
+                <li>timberwood.brt@gmail.com</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="bottom">
+        <div>© 2026 TimberWood Pvt Ltd.</div>
+        <div>All Rights Reserved</div>
+    </div>
+
+</footer>
+
+<!-- LIGHTBOX -->
+
+<div class="lightbox" id="lightbox">
+
+    <span class="close" onclick="closeImage()">×</span>
+
+    <img id="lightbox-img">
+
+</div>
+
+<script>
+
+/* MOBILE MENU */
+
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("active");
+}
+
+/* IMAGE VIEWER */
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+function openImage(src){
+    lightbox.style.display = "flex";
+    lightboxImg.src = src;
+}
+
+function closeImage(){
+    lightbox.style.display = "none";
+}
+
+/* TOUCH SWIPE */
+
+let startX = 0;
+
+lightbox.addEventListener('touchstart', e=>{
+    startX = e.touches[0].clientX;
+});
+
+lightbox.addEventListener('touchend', e=>{
+    let endX = e.changedTouches[0].clientX;
+
+    if(Math.abs(startX - endX) > 80){
+        closeImage();
+    }
+});
+
+/* CLICK OUTSIDE */
+
+lightbox.addEventListener('click', function(e){
+    if(e.target !== lightboxImg){
+        closeImage();
+    }
+});
+
+</script>
+
+</body>
+</html>

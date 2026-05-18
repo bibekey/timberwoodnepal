@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>TimberWood | About Us</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0f1115;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(15,17,21,0.92);
+    backdrop-filter:blur(12px);
+    z-index:1000;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+    font-size:30px;
+    font-weight:700;
+    color:white;
+}
+
+.logo span{
+    color:#c89b63;
+}
+
+nav ul{
+    display:flex;
+    gap:28px;
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-size:15px;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#c89b63;
+}
+
+.menu-toggle{
+    display:none;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.about-hero{
+    min-height:75vh;
+    padding:140px 7% 80px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about-text h4{
+    color:#c89b63;
+    margin-bottom:15px;
+    letter-spacing:2px;
+}
+
+.about-text h1{
+    font-size:60px;
+    line-height:1.1;
+    margin-bottom:25px;
+}
+
+.about-text p{
+    color:#bdbdbd;
+    line-height:1.9;
+    font-size:16px;
+    margin-bottom:30px;
+}
+
+.about-btns{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.about-btns a{
+    padding:14px 28px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:#c89b63;
+    color:#111;
+}
+
+.btn-primary:hover{
+    transform:translateY(-4px);
+}
+
+.btn-outline{
+    border:1px solid rgba(255,255,255,0.15);
+    color:white;
+}
+
+.btn-outline:hover{
+    background:white;
+    color:black;
+}
+
+.about-image{
+    position:relative;
+}
+
+.about-image img{
+    width:100%;
+    border-radius:30px;
+    object-fit:cover;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+/* STORY */
+
+.story{
+    padding:90px 7%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.story img{
+    width:100%;
+    border-radius:25px;
+}
+
+.story-text h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.story-text p{
+    color:#bdbdbd;
+    line-height:1.9;
+    margin-bottom:20px;
+}
+
+/* STATS */
+
+.stats{
+    padding:20px 7% 100px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.stat-box{
+    background:#171a20;
+    padding:40px 20px;
+    border-radius:22px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,0.06);
+    transition:.4s;
+}
+
+.stat-box:hover{
+    transform:translateY(-10px);
+}
+
+.stat-box h2{
+    font-size:42px;
+    color:#c89b63;
+    margin-bottom:10px;
+}
+
+.stat-box p{
+    color:#bdbdbd;
+}
+
+/* TEAM */
+
+.team{
+    padding:100px 7%;
+    background:#15181d;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    color:#bdbdbd;
+}
+
+.team-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.team-card{
+    background:#1b1f26;
+    border-radius:25px;
+    overflow:hidden;
+    transition:.4s;
+    border:1px solid rgba(255,255,255,0.05);
+}
+
+.team-card:hover{
+    transform:translateY(-10px);
+}
+
+.team-card img{
+    width:100%;
+    height:340px;
+    object-fit:cover;
+}
+
+.team-content{
+    padding:25px;
+}
+
+.team-content h3{
+    margin-bottom:8px;
+}
+
+.team-content p{
+    color:#bdbdbd;
+}
+
+/* WHY US */
+
+.why{
+    padding:100px 7%;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.why-card{
+    background:#171a20;
+    padding:35px;
+    border-radius:24px;
+    transition:.4s;
+    border:1px solid rgba(255,255,255,0.06);
+}
+
+.why-card:hover{
+    transform:translateY(-8px);
+}
+
+.why-card h3{
+    margin:20px 0 15px;
+}
+
+.why-card p{
+    color:#bdbdbd;
+    line-height:1.8;
+}
+
+.icon{
+    width:70px;
+    height:70px;
+    border-radius:20px;
+    background:#c89b63;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    color:#111;
+}
+
+/* CTA */
+
+.cta{
+    padding:110px 7%;
+    text-align:center;
+    background:linear-gradient(to right,#1a1d24,#111);
+}
+
+.cta h2{
+    font-size:52px;
+    margin-bottom:20px;
+}
+
+.cta p{
+    color:#bdbdbd;
+    max-width:700px;
+    margin:auto;
+    line-height:1.9;
+}
+
+.cta a{
+    display:inline-block;
+    margin-top:35px;
+    padding:16px 36px;
+    background:#c89b63;
+    color:#111;
+    border-radius:16px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.cta a:hover{
+    transform:translateY(-5px);
+}
+
+/* FOOTER */
+
+footer{
+    background:#0b0d10;
+    padding:70px 7% 30px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer-grid h3{
+    margin-bottom:20px;
+}
+
+.footer-grid p,
+.footer-grid li{
+    color:#bdbdbd;
+    line-height:2;
+    list-style:none;
+}
+
+.footer-grid ul{
+    padding:0;
+}
+
+.footer-grid a{
+    color:#bdbdbd;
+    text-decoration:none;
+}
+
+.footer-grid a:hover{
+    color:#c89b63;
+}
+
+.bottom{
+    margin-top:50px;
+    padding-top:25px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:15px;
+    color:#888;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+    .about-hero,
+    .story{
+        grid-template-columns:1fr;
+    }
+
+    .team-grid,
+    .why-grid,
+    .stats,
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .about-text h1{
+        font-size:45px;
+    }
+
+    .cta h2{
+        font-size:40px;
+    }
+}
+
+@media(max-width:768px){
+
+    .menu-toggle{
+        display:block;
+    }
+
+    nav ul{
+        position:absolute;
+        top:80px;
+        left:0;
+        width:100%;
+        background:#111;
+        flex-direction:column;
+        padding:30px;
+        display:none;
+    }
+
+    nav ul.active{
+        display:flex;
+    }
+
+    .team-grid,
+    .why-grid,
+    .stats,
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about-text h1{
+        font-size:38px;
+    }
+
+    .section-title h2,
+    .cta h2{
+        font-size:34px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        Timber<span>Wood</span>
+    </div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+        ☰
+    </div>
+
+    <ul id="navLinks">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Catalog</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="about-hero">
+
+    <div class="about-text">
+
+        <h4>ABOUT TIMBERWOOD</h4>
+
+        <h1>
+            Crafting Premium Furniture For Modern Living
+        </h1>
+
+        <p>
+            TimberWood is a premium furniture brand dedicated to creating elegant, durable, and timeless furniture designs for homes, offices, and commercial interiors. We blend modern aesthetics with expert craftsmanship to deliver furniture that transforms spaces beautifully.
+        </p>
+
+        <div class="about-btns">
+            <a href="#" class="btn-primary">
+                Explore Catalog
+            </a>
+
+            <a href="#" class="btn-outline">
+                Contact Us
+            </a>
+        </div>
+
+    </div>
+
+    <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop">
+    </div>
+
+</section>
+
+<!-- STORY -->
+
+<section class="story">
+
+    <img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?q=80&w=1200&auto=format&fit=crop">
+
+    <div class="story-text">
+
+        <h2>Our Story</h2>
+
+        <p>
+            Founded with a passion for interior craftsmanship, TimberWood started with a vision to create luxurious yet affordable furniture for every home.
+        </p>
+
+        <p>
+            From handcrafted wooden beds to modern office furniture, we carefully design each product using quality materials and skilled workmanship.
+        </p>
+
+        <p>
+            Today, TimberWood proudly serves customers with modern furniture collections designed for comfort, elegance, and long-lasting durability.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- STATS -->
+
+<section class="stats">
+
+    <div class="stat-box">
+        <h2>10+</h2>
+        <p>Years Experience</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>5000+</h2>
+        <p>Happy Customers</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>250+</h2>
+        <p>Furniture Designs</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>24/7</h2>
+        <p>Customer Support</p>
+    </div>
+
+</section>
+
+<!-- TEAM -->
+
+<section class="team">
+
+    <div class="section-title">
+        <h2>Meet Our Team</h2>
+        <p>
+            Skilled professionals behind every TimberWood creation.
+        </p>
+    </div>
+
+    <div class="team-grid">
+
+        <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop">
+
+            <div class="team-content">
+                <h3>Rajesh Sharma</h3>
+                <p>Founder & Director</p>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop">
+
+            <div class="team-content">
+                <h3>Priya Thapa</h3>
+                <p>Interior Designer</p>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000&auto=format&fit=crop">
+
+            <div class="team-content">
+                <h3>Aman Rai</h3>
+                <p>Furniture Specialist</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- WHY US -->
+
+<section class="why">
+
+    <div class="section-title">
+        <h2>Why Choose Us</h2>
+        <p>
+            We focus on quality, innovation, and customer satisfaction.
+        </p>
+    </div>
+
+    <div class="why-grid">
+
+        <div class="why-card">
+
+            <div class="icon">🪵</div>
+
+            <h3>Premium Materials</h3>
+
+            <p>
+                High-quality wood, fabrics, and finishes crafted for durability and luxury interiors.
+            </p>
+
+        </div>
+
+        <div class="why-card">
+
+            <div class="icon">✨</div>
+
+            <h3>Modern Designs</h3>
+
+            <p>
+                Elegant contemporary furniture collections designed to elevate every living space.
+            </p>
+
+        </div>
+
+        <div class="why-card">
+
+            <div class="icon">🚚</div>
+
+            <h3>Fast Delivery</h3>
+
+            <p>
+                Reliable delivery and installation support to ensure a smooth customer experience.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+
+    <h2>
+        Transform Your Space With TimberWood
+    </h2>
+
+    <p>
+        Discover beautifully crafted furniture collections designed for modern homes, offices, and luxurious interiors.
+    </p>
+
+    <a href="#">
+        Browse Collection
+    </a>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <div class="logo">
+                Timber<span>Wood</span>
+            </div>
+
+            <p style="margin-top:20px;">
+                Premium furniture brand creating elegant modern interiors with high-quality craftsmanship and timeless designs.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>Company</h3>
+
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+
+        </div>
+
+        <div>
+
+            <h3>Products</h3>
+
+            <ul>
+                <li><a href="#">Beds</a></li>
+                <li><a href="#">Sofa Sets</a></li>
+                <li><a href="#">Dining Tables</a></li>
+                <li><a href="#">Wardrobes</a></li>
+            </ul>
+
+        </div>
+
+        <div>
+
+            <h3>Contact</h3>
+
+            <ul>
+                <li>Biratnagar, Nepal</li>
+                <li>9807091947</li>
+                <li>timberwood@gmail.com</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="bottom">
+
+        <div>
+            © 2026 TimberWood. All Rights Reserved.
+        </div>
+
+        <div>
+            Privacy Policy | Terms & Conditions
+        </div>
+
+    </div>
+
+</footer>
+
+<script>
+
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("active");
+}
+
+</script>
+
+</body>
+</html>

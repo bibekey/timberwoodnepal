@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Blog Article | TimberWood</title>
+<link rel="icon" href="img/home/LOGO.png" type="image/x-icon">   <!-- font icons -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f6f3ee;
+    color:#222;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 7%;
+    z-index:1000;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#5c3d2e;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#333;
+    font-weight:500;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#8b5e3c;
+}
+
+.menu-btn{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    height:70vh;
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1600&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero-content{
+    color:#fff;
+    max-width:900px;
+}
+
+.hero-content span{
+    background:#8b5e3c;
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:14px;
+    display:inline-block;
+    margin-bottom:20px;
+}
+
+.hero-content h1{
+    font-size:52px;
+    margin-bottom:20px;
+    line-height:1.2;
+}
+
+.hero-content p{
+    font-size:18px;
+    opacity:.9;
+}
+
+/* ARTICLE */
+
+.article-container{
+    max-width:1100px;
+    margin:auto;
+    padding:80px 7%;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:50px;
+}
+
+.article-content{
+    background:#fff;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+.article-content img{
+    width:100%;
+    border-radius:20px;
+    margin:25px 0;
+}
+
+.article-content h2{
+    margin:35px 0 15px;
+    color:#5c3d2e;
+    font-size:30px;
+}
+
+.article-content p{
+    line-height:1.9;
+    margin-bottom:20px;
+    color:#555;
+}
+
+.quote{
+    background:#f4ece5;
+    padding:30px;
+    border-left:5px solid #8b5e3c;
+    border-radius:15px;
+    font-size:20px;
+    font-weight:500;
+    margin:35px 0;
+    color:#5c3d2e;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.sidebar-card{
+    background:#fff;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+.sidebar-card h3{
+    margin-bottom:20px;
+    color:#5c3d2e;
+}
+
+.recent-post{
+    display:flex;
+    gap:15px;
+    margin-bottom:20px;
+    align-items:center;
+}
+
+.recent-post img{
+    width:90px;
+    height:70px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.recent-post h4{
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+.recent-post span{
+    font-size:13px;
+    color:#888;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.tags a{
+    text-decoration:none;
+    padding:10px 16px;
+    background:#f4ece5;
+    color:#5c3d2e;
+    border-radius:30px;
+    font-size:14px;
+    transition:.3s;
+}
+
+.tags a:hover{
+    background:#8b5e3c;
+    color:#fff;
+}
+
+/* AUTHOR */
+
+.author-box{
+    margin-top:50px;
+    display:flex;
+    gap:25px;
+    align-items:center;
+    background:#f4ece5;
+    padding:30px;
+    border-radius:20px;
+}
+
+.author-box img{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.author-box h3{
+    margin-bottom:10px;
+    color:#5c3d2e;
+}
+
+/* FOOTER */
+
+footer{
+    background:#1d1d1d;
+    color:#fff;
+    padding:70px 7% 30px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:40px;
+}
+
+.footer-grid h2{
+    margin-bottom:20px;
+}
+
+.footer-grid p,
+.footer-grid li{
+    color:#bbb;
+    line-height:1.9;
+    list-style:none;
+}
+
+.footer-grid input{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    margin-top:15px;
+    margin-bottom:15px;
+}
+
+.footer-grid button{
+    padding:14px 30px;
+    border:none;
+    border-radius:12px;
+    background:#8b5e3c;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.bottom{
+    text-align:center;
+    padding-top:40px;
+    color:#aaa;
+    font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .article-container{
+        grid-template-columns:1fr;
+    }
+
+    .hero-content h1{
+        font-size:38px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    nav ul{
+        position:fixed;
+        top:80px;
+        right:-100%;
+        width:260px;
+        height:100vh;
+        background:#fff;
+        flex-direction:column;
+        padding:40px;
+        transition:.4s;
+    }
+
+    nav ul.active{
+        right:0;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .hero{
+        height:60vh;
+    }
+
+    .hero-content h1{
+        font-size:30px;
+    }
+
+    .article-content{
+        padding:25px;
+    }
+
+    .author-box{
+        flex-direction:column;
+        text-align:center;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">TimberWood</div>
+
+    <ul id="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span>Interior Design</span>
+
+        <h1>Modern Furniture Trends That Transform Your Living Space</h1>
+
+        <p>Discover elegant wooden furniture styles, smart layouts, and timeless interior inspiration for your dream home.</p>
+
+    </div>
+
+</section>
+
+<!-- ARTICLE -->
+
+<section class="article-container">
+
+    <!-- MAIN ARTICLE -->
+
+    <div class="article-content">
+
+        <p>
+            Wooden furniture continues to dominate modern interior design because of its timeless beauty,
+            natural warmth, and premium appearance. Today’s homes blend minimalism with comfort,
+            creating spaces that feel both elegant and relaxing.
+        </p>
+
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1600&auto=format&fit=crop">
+
+        <h2>1. Natural Wooden Texture</h2>
+
+        <p>
+            Interior designers are now focusing on natural wood finishes instead of heavy glossy surfaces.
+            Soft oak textures, walnut tones, and matte wooden laminates create a luxury atmosphere while
+            maintaining simplicity.
+        </p>
+
+        <p>
+            Wooden beds with floating side tables and hidden lighting are becoming extremely popular in
+            modern bedrooms because they offer both functionality and aesthetic appeal.
+        </p>
+
+        <div class="quote">
+            “Furniture is not just decoration — it defines the emotion and comfort of your home.”
+        </div>
+
+        <h2>2. Multi-Functional Furniture</h2>
+
+        <p>
+            Smart furniture designs are essential for modern homes. Storage beds, modular sofas,
+            foldable dining tables, and TV cabinets with hidden compartments help maximize space while
+            keeping interiors clean and organized.
+        </p>
+
+        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1600&auto=format&fit=crop">
+
+        <h2>3. Minimal Design Philosophy</h2>
+
+        <p>
+            Minimal furniture designs use clean lines, neutral colors, and balanced spacing.
+            Instead of overcrowding rooms with heavy decoration, modern interiors focus on fewer but
+            premium-quality furniture pieces.
+        </p>
+
+        <p>
+            This approach creates a calm environment while making the room appear larger and brighter.
+        </p>
+
+        <!-- AUTHOR -->
+
+        <div class="author-box">
+
+            <img src="https://randomuser.me/api/portraits/men/32.jpg">
+
+            <div>
+                <h3>Written by TimberWood Studio</h3>
+                <p>
+                    TimberWood creates premium wooden furniture collections designed for modern living.
+                    We combine craftsmanship, comfort, and contemporary aesthetics.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <div class="sidebar-card">
+
+            <h3>Recent Articles</h3>
+
+            <div class="recent-post">
+                <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=600&auto=format&fit=crop">
+                <div>
+                    <h4>Luxury Bedroom Ideas</h4>
+                    <span>May 2026</span>
+                </div>
+            </div>
+
+            <div class="recent-post">
+                <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=600&auto=format&fit=crop">
+                <div>
+                    <h4>Minimal Dining Spaces</h4>
+                    <span>April 2026</span>
+                </div>
+            </div>
+
+            <div class="recent-post">
+                <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=600&auto=format&fit=crop">
+                <div>
+                    <h4>Modern Kitchen Setup</h4>
+                    <span>March 2026</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="sidebar-card">
+
+            <h3>Popular Tags</h3>
+
+            <div class="tags">
+                <a href="#">Interior</a>
+                <a href="#">Furniture</a>
+                <a href="#">Wood</a>
+                <a href="#">Bedroom</a>
+                <a href="#">Living Room</a>
+                <a href="#">Luxury</a>
+                <a href="#">Modern</a>
+                <a href="#">Design</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+            <h2>TimberWood</h2>
+            <p>
+                Premium furniture solutions crafted with modern elegance and timeless wooden design.
+            </p>
+        </div>
+
+        <div>
+            <h2>Quick Links</h2>
+            <ul>
+                <li>Home</li>
+                <li>Catalog</li>
+                <li>Services</li>
+                <li>Portfolio</li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Contact</h2>
+            <p>
+                Biratnagar, Nepal<br><br>
+                9800000000<br><br>
+                timberwood@email.com
+            </p>
+        </div>
+
+        <div>
+            <h2>Newsletter</h2>
+
+            <input type="email" placeholder="Your Email">
+
+            <button>Subscribe</button>
+        </div>
+
+    </div>
+
+    <div class="bottom">
+        © 2026 TimberWood. All Rights Reserved.
+    </div>
+
+</footer>
+
+<script>
+
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("active");
+}
+
+</script>
+
+</body>
+</html>
