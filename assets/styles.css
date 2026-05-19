@@ -4,60 +4,19 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-}
-
-/* smooth scrolling */
-html{
     scroll-behavior: smooth;
 }
 
-/* body base with soft entrance animation */
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     background:#0f1115;
     color:white;
     overflow-x:hidden;
-
-    opacity: 0;
-    animation: pageLoad 1s ease forwards;
 }
 
-/* page load fade + slight zoom */
-@keyframes pageLoad {
-    from{
-        opacity: 0;
-        transform: scale(1.02);
-    }
-    to{
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* smooth section reveal (optional use on sections) */
-section{
-    opacity: 0;
-    transform: translateY(20px);
-    animation: sectionFade 0.8s ease forwards;
-}
-
-/* stagger effect for multiple sections */
-section:nth-child(1){ animation-delay: 0.1s; }
-section:nth-child(2){ animation-delay: 0.2s; }
-section:nth-child(3){ animation-delay: 0.3s; }
-section:nth-child(4){ animation-delay: 0.4s; }
-
-@keyframes sectionFade {
-    to{
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* optional: smoother text rendering */
-body, html {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
 
 
 
