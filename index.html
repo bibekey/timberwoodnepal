@@ -12,7 +12,54 @@
 
 
 
+/* NAVBAR */
 
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(15,17,21,0.88);
+    backdrop-filter:blur(14px);
+    z-index:1000;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo img{
+    height:40px;
+    width:auto;
+    display:block;
+}
+
+.logo span{
+    color:#c89b63;
+}
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+    font-size:15px;
+}
+
+nav ul li a:hover{
+    color:#c89b63;
+}
+
+.menu-toggle{
+    display:none;
+    font-size:30px;
+    cursor:pointer;
+}
 
 /* HERO */
 
@@ -517,8 +564,25 @@ footer{
 
 <nav>
 
-<!-- NAVBAR -->
+<div class="logo">
+    <img src="img/home/LOGO.png" alt="TimberWood Logo">
+</div>
 
+    <div class="menu-toggle" onclick="toggleMenu()">
+        ☰
+    </div>
+
+    <ul id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+</nav>
 
 <!-- HERO -->
 

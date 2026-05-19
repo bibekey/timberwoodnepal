@@ -23,7 +23,50 @@ body{
     color:#222;
 }
 
+/* NAVBAR */
 
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 7%;
+    z-index:1000;
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#5c3d2e;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#333;
+    font-weight:500;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#8b5e3c;
+}
+
+.menu-btn{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
 
 /* HERO */
 
@@ -317,14 +360,9 @@ footer{
 
 <nav>
 
-<div class="logo">
-    <img src="img/home/LOGO.png" alt="TimberWood Logo">
-</div>
+    <div class="logo">TimberWood</div>
 
-<div class="menu-btn" id="menuBtn">
-☰
-</div>
-<ul>
+    <ul id="menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
@@ -333,6 +371,8 @@ footer{
         <li><a href="catalog.html">Catalog</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
 </nav>
 
