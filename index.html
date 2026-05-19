@@ -22,8 +22,8 @@ html{
 }
 
 body{
-    background:#0f1115;
-    color:white;
+    background:#0f0f0f;
+    color:#fff;
     overflow-x:hidden;
 }
 
@@ -34,14 +34,17 @@ nav{
     top:0;
     left:0;
     width:100%;
-    padding:18px 7%;
+    height:75px;
+
+    background:rgba(0,0,0,.9);
+    backdrop-filter:blur(10px);
+
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    background:rgba(15,17,21,0.88);
-    backdrop-filter:blur(14px);
-    z-index:1000;
-    border-bottom:1px solid rgba(255,255,255,0.08);
+    justify-content:space-between;
+
+    padding:0 5%;
+    z-index:999;
 }
 
 .logo img{
