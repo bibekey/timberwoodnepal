@@ -376,7 +376,9 @@ IMAGE VIEWER
     right:20px;
 }
 
-/* MOBILE */
+/* =========================
+MOBILE 1
+========================= */
 
 @media(max-width:768px){
 
@@ -401,6 +403,55 @@ IMAGE VIEWER
 
 }
 
+/* =========================
+MOBILE 2
+========================= */
+
+@media(max-width:768px){
+
+    .menu-btn{
+        display:block;
+    }
+
+    nav ul{
+        position:absolute;
+        top:75px;
+        left:-100%;
+
+        width:100%;
+
+        background:#111;
+
+        flex-direction:column;
+        padding:30px;
+
+        transition:.4s;
+    }
+
+    nav ul.active{
+        left:0;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .catalog{
+        grid-template-columns:1fr;
+    }
+
+    .card img{
+        height:260px;
+    }
+
+    .prev,
+    .next{
+        width:45px;
+        height:45px;
+        font-size:20px;
+    }
+
+}
 
 /* =========================
 FOOTER
@@ -462,56 +513,6 @@ footer button{
     flex-wrap:wrap;
 
     opacity:.7;
-}
-
-/* =========================
-MOBILE
-========================= */
-
-@media(max-width:768px){
-
-    .menu-btn{
-        display:block;
-    }
-
-    nav ul{
-        position:absolute;
-        top:75px;
-        left:-100%;
-
-        width:100%;
-
-        background:#111;
-
-        flex-direction:column;
-        padding:30px;
-
-        transition:.4s;
-    }
-
-    nav ul.active{
-        left:0;
-    }
-
-    .hero h1{
-        font-size:38px;
-    }
-
-    .catalog{
-        grid-template-columns:1fr;
-    }
-
-    .card img{
-        height:260px;
-    }
-
-    .prev,
-    .next{
-        width:45px;
-        height:45px;
-        font-size:20px;
-    }
-
 }
 
 </style>

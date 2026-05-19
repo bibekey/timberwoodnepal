@@ -595,7 +595,36 @@ footer{
 
 }
 
-/* MOBILE */
+
+    .hero{
+        padding-top:120px;
+    }
+
+    .hero-text h1{
+        font-size:42px;
+    }
+
+    .section-title h2,
+    .about-text h2,
+    .cta h2{
+        font-size:34px;
+    }
+
+    .feature-grid,
+    .collection-grid,
+    .product-grid,
+    .testimonial-grid,
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+
+/* =========================
+MOBILE 1
+========================= */
 
 @media(max-width:768px){
 
@@ -620,26 +649,52 @@ footer{
 
 }
 
-    .hero{
-        padding-top:120px;
+/* =========================
+MOBILE 2
+========================= */
+
+@media(max-width:768px){
+
+    .menu-btn{
+        display:block;
     }
 
-    .hero-text h1{
-        font-size:42px;
+    nav ul{
+        position:absolute;
+        top:75px;
+        left:-100%;
+
+        width:100%;
+
+        background:#111;
+
+        flex-direction:column;
+        padding:30px;
+
+        transition:.4s;
     }
 
-    .section-title h2,
-    .about-text h2,
-    .cta h2{
-        font-size:34px;
+    nav ul.active{
+        left:0;
     }
 
-    .feature-grid,
-    .collection-grid,
-    .product-grid,
-    .testimonial-grid,
-    .footer-grid{
+    .hero h1{
+        font-size:38px;
+    }
+
+    .catalog{
         grid-template-columns:1fr;
+    }
+
+    .card img{
+        height:260px;
+    }
+
+    .prev,
+    .next{
+        width:45px;
+        height:45px;
+        font-size:20px;
     }
 
 }
