@@ -81,8 +81,6 @@ nav ul li a:hover{
     cursor:pointer;
 }
 
-
-
 /* FEATURES */
 
 .features{
@@ -863,10 +861,16 @@ footer{
 
 <script>
 
-function toggleMenu(){
-    document.getElementById("navLinks").classList.toggle("active");
-}
+/* =========================
+MOBILE MENU
+========================= */
 
+const menuBtn = document.getElementById('menuBtn');
+const navMenu = document.querySelector('nav ul');
+
+menuBtn.onclick = () =>{
+    navMenu.classList.toggle('active');
+};
 </script>
 
 </body>
