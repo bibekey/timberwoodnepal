@@ -75,119 +75,7 @@ nav ul li a:hover{
 }
 
 
-/* =========================
-FOOTER
-========================= */
 
-footer{
-    background:#0b0d10;
-    padding:70px 7% 30px;
-}
-
-.footer-grid{
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr 1fr;
-    gap:40px;
-}
-
-.footer-grid h3{
-    margin-bottom:20px;
-}
-
-.footer-grid p,
-.footer-grid li{
-    color:#bdbdbd;
-    line-height:2;
-    list-style:none;
-}
-
-.footer-grid a{
-    text-decoration:none;
-    color:#bdbdbd;
-}
-
-.footer-grid a:hover{
-    color:#c89b63;
-}
-
-.bottom{
-    margin-top:50px;
-    padding-top:25px;
-    border-top:1px solid rgba(255,255,255,0.08);
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:15px;
-    color:#888;
-}
-
-/* MOBILE */
-
-@media(max-width:1100px){
-
-    .hero,
-    .about{
-        grid-template-columns:1fr;
-    }
-
-    .feature-grid,
-    .collection-grid,
-    .product-grid,
-    .testimonial-grid,
-    .footer-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .hero-text h1{
-        font-size:56px;
-    }
-
-}
-
-@media(max-width:768px){
-
-    .menu-toggle{
-        display:block;
-    }
-
-    nav ul{
-        position:absolute;
-        top:80px;
-        left:0;
-        width:100%;
-        background:#111;
-        flex-direction:column;
-        padding:30px;
-        display:none;
-    }
-
-    nav ul.active{
-        display:flex;
-    }
-
-    .hero{
-        padding-top:120px;
-    }
-
-    .hero-text h1{
-        font-size:42px;
-    }
-
-    .section-title h2,
-    .about-text h2,
-    .cta h2{
-        font-size:34px;
-    }
-
-    .feature-grid,
-    .collection-grid,
-    .product-grid,
-    .testimonial-grid,
-    .footer-grid{
-        grid-template-columns:1fr;
-    }
-
-}
 
 /* =========================
 HERO| INDEX
@@ -202,6 +90,8 @@ HERO| INDEX
     padding:140px 7% 100px;
     position:relative;
     overflow:hidden;
+    display:flex;
+    justify-content:center;
 }
 
 .hero::before{
@@ -214,6 +104,9 @@ HERO| INDEX
     opacity:.15;
     top:-100px;
     right:-100px;
+    inset:0;
+    background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url('BED/BED (1).png') center/cover;
+    transform:scale(1.05);
 }
 
 .hero-text h4{
@@ -259,7 +152,9 @@ HERO| INDEX
     color:#111;
 }
 
-.btn-primary:hover{
+.btn-primary:hover{.btn-primary:hover{
+    transform:translateY(-4px);
+}
     transform:translateY(-5px);
 }
 
@@ -295,6 +190,7 @@ HERO| INDEX
         gap:40px;
         padding:120px 5% 70px;
         text-align:center;
+        height:60vh;
     }
 
     .hero-text{
@@ -325,11 +221,6 @@ HERO| INDEX
 
 @media(max-width:600px){
 
-    .hero{
-        padding:110px 20px 60px;
-        gap:30px;
-    }
-
     .hero-text h4{
         font-size:12px;
         letter-spacing:1px;
@@ -356,10 +247,6 @@ HERO| INDEX
         font-size:15px;
     }
 
-    .hero-image img{
-        border-radius:20px;
-    }
-
     .hero::before{
         width:250px;
         height:250px;
@@ -369,7 +256,7 @@ HERO| INDEX
 }
 
 /* =========================
-HERO|ABOUT|STORY|STATS|TEAM|WHY US|CTA
+ABOUT|STORY|STATS|TEAM|WHY US|CTA
 ========================= */
 
 .about-hero{
@@ -414,25 +301,6 @@ HERO|ABOUT|STORY|STATS|TEAM|WHY US|CTA
     transition:.3s;
 }
 
-.btn-primary{
-    background:#c89b63;
-    color:#111;
-}
-
-.btn-primary:hover{
-    transform:translateY(-4px);
-}
-
-.btn-outline{
-    border:1px solid rgba(255,255,255,0.15);
-    color:white;
-}
-
-.btn-outline:hover{
-    background:white;
-    color:black;
-}
-
 .about-image{
     position:relative;
 }
@@ -472,7 +340,7 @@ HERO|ABOUT|STORY|STATS|TEAM|WHY US|CTA
 
 /* STATS */
 
-.stats{
+.stats1{
     padding:20px 7% 100px;
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -520,7 +388,11 @@ HERO|ABOUT|STORY|STATS|TEAM|WHY US|CTA
 }
 
 .section-title p{
-    color:#bdbdbd;
+    opacity:.7;
+    color:#aaa;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
 }
 
 .team-grid{
@@ -565,6 +437,7 @@ HERO|ABOUT|STORY|STATS|TEAM|WHY US|CTA
 
 .why{
     padding:100px 7%;
+    background:#121212;
 }
 
 .why-grid{
@@ -612,6 +485,9 @@ HERO|ABOUT|STORY|STATS|TEAM|WHY US|CTA
     padding:110px 7%;
     text-align:center;
     background:linear-gradient(to right,#1a1d24,#111);
+    background-size:cover;
+    background-position:center;
+    border-radius:35px;
 }
 
 .cta h2{
@@ -643,30 +519,9 @@ HERO|ABOUT|STORY|STATS|TEAM|WHY US|CTA
 }
 
 /* =========================
-HERO|SERVICES|SECTION TITLE|SERVICES|WHY CHOOSE US|PROCESS|CTA|MOBILE
+SECTION TITLE|SERVICES|WHY CHOOSE US|PROCESS|CTA|MOBILE
 ========================= */
 
-.hero{
-    height:70vh;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    overflow:hidden;
-}
-
-.hero::before{
-    content:'';
-    position:absolute;
-    inset:0;
-
-    background:
-    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-    url('BED/BED (1).png') center/cover;
-
-    transform:scale(1.05);
-}
 
 .hero-content{
     position:relative;
@@ -689,24 +544,6 @@ HERO|SERVICES|SECTION TITLE|SERVICES|WHY CHOOSE US|PROCESS|CTA|MOBILE
     color:#ccc;
     font-size:18px;
     line-height:1.8;
-}
-
-/* =========================
-SECTION TITLE
-========================= */
-
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.section-title h2{
-    font-size:42px;
-    margin-bottom:12px;
-}
-
-.section-title p{
-    opacity:.7;
 }
 
 /* =========================
@@ -775,17 +612,6 @@ SERVICES
 /* =========================
 WHY CHOOSE US
 ========================= */
-
-.why{
-    padding:100px 5%;
-    background:#121212;
-}
-
-.why-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-}
 
 .why-box{
     background:#1b1b1b;
@@ -865,19 +691,6 @@ PROCESS
 CTA
 ========================= */
 
-.cta{
-    padding:100px 5%;
-
-    text-align:center;
-
-    background:
-    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-    url('SOFA SETS/SOFA SETS (1).png');
-
-    background-size:cover;
-    background-position:center;
-}
-
 .cta h2{
     font-size:48px;
     margin-bottom:15px;
@@ -943,23 +756,8 @@ CTA
         display:block;
     }
 
-    nav ul{
-        position:absolute;
-        top:80px;
-        left:0;
-        width:100%;
-        background:#111;
-        flex-direction:column;
-        padding:30px;
-        display:none;
-    }
-
     nav ul.active{
         display:flex;
-    }
-
-    .hero{
-        padding-top:120px;
     }
 
     .hero-text h1{
@@ -983,30 +781,8 @@ CTA
 }
 
 /* =========================
-HERO|PORTFOLIO|PORTFOLIO GRID|STATS|CTA|LIGHTBOX|MOBILE
+PORTFOLIO GRID|STATS|CTA|LIGHTBOX|MOBILE
 ========================= */
-
-.hero{
-    height:70vh;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    overflow:hidden;
-}
-
-.hero::before{
-    content:'';
-    position:absolute;
-    inset:0;
-
-    background:
-    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-    url('BED/BED (1).png') center/cover;
-
-    transform:scale(1.05);
-}
 
 .hero-content{
     position:relative;
@@ -1037,25 +813,8 @@ HERO|PORTFOLIO|PORTFOLIO GRID|STATS|CTA|LIGHTBOX|MOBILE
     padding:100px 7%;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.section-title h2{
-    font-size:48px;
-    margin-bottom:15px;
-}
-
 .section-title span{
     color:#c89b63;
-}
-
-.section-title p{
-    color:#aaa;
-    max-width:700px;
-    margin:auto;
-    line-height:1.8;
 }
 
 /* PORTFOLIO GRID */
@@ -1204,16 +963,6 @@ HERO|PORTFOLIO|PORTFOLIO GRID|STATS|CTA|LIGHTBOX|MOBILE
 
 /* CTA */
 
-.cta{
-    background:
-    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
-    url('SOFA SETS/SOFA SETS (5).png') center/cover;
-
-    border-radius:35px;
-    padding:90px 50px;
-    text-align:center;
-}
-
 .cta h2{
     font-size:55px;
     margin-bottom:20px;
@@ -1283,10 +1032,6 @@ HERO|PORTFOLIO|PORTFOLIO GRID|STATS|CTA|LIGHTBOX|MOBILE
         font-size:42px;
     }
 
-    .section-title h2{
-        font-size:34px;
-    }
-
     .cta h2{
         font-size:38px;
     }
@@ -1312,10 +1057,6 @@ HERO|PORTFOLIO|PORTFOLIO GRID|STATS|CTA|LIGHTBOX|MOBILE
 
     nav ul.active{
         display:flex;
-    }
-
-    .hero{
-        height:60vh;
     }
 
     .hero h1{
@@ -1347,30 +1088,8 @@ HERO| CATALOG
 
 
 /* =========================
-HERO|BLOG|FEATURED|NEWSLETTER|MOBILE
+BLOG|FEATURED|NEWSLETTER|MOBILE
 ========================= */
-
-.hero{
-    height:70vh;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    overflow:hidden;
-}
-
-.hero::before{
-    content:'';
-    position:absolute;
-    inset:0;
-
-    background:
-    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-    url('BED/BED (1).png') center/cover;
-
-    transform:scale(1.05);
-}
 
 .hero-content{
     position:relative;
@@ -1401,25 +1120,8 @@ HERO|BLOG|FEATURED|NEWSLETTER|MOBILE
     padding:100px 7%;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.section-title h2{
-    font-size:50px;
-    margin-bottom:15px;
-}
-
 .section-title span{
     color:#c89b63;
-}
-
-.section-title p{
-    color:#aaa;
-    max-width:700px;
-    margin:auto;
-    line-height:1.8;
 }
 
 /* BLOG GRID */
@@ -1646,27 +1348,12 @@ HERO|BLOG|FEATURED|NEWSLETTER|MOBILE
         display:block;
     }
 
-    nav ul{
-        position:absolute;
-        top:80px;
-        left:0;
-        width:100%;
-        background:#111;
-        flex-direction:column;
-        padding:30px;
-        display:none;
-    }
-
     nav ul.active{
         display:flex;
     }
 
     .hero h1{
         font-size:42px;
-    }
-
-    .section-title h2{
-        font-size:35px;
     }
 
     .featured-content{
@@ -1688,10 +1375,6 @@ HERO|BLOG|FEATURED|NEWSLETTER|MOBILE
 }
 
 @media(max-width:600px){
-
-    .hero{
-        height:60vh;
-    }
 
     .hero h1{
         font-size:34px;
@@ -1722,30 +1405,8 @@ HERO| ARTICLE
 
 
 /* =========================
-HERO|CONTACT|LEFT|FORM|MAP|MOBILE|
+CONTACT|LEFT|FORM|MAP|MOBILE|
 ========================= */
-
-.hero{
-    height:70vh;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    overflow:hidden;
-}
-
-.hero::before{
-    content:'';
-    position:absolute;
-    inset:0;
-
-    background:
-    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-    url('BED/BED (1).png') center/cover;
-
-    transform:scale(1.05);
-}
 
 .hero-content{
     position:relative;
@@ -1926,17 +1587,6 @@ HERO|CONTACT|LEFT|FORM|MAP|MOBILE|
         display:block;
     }
 
-    nav ul{
-        position:absolute;
-        top:80px;
-        left:0;
-        width:100%;
-        background:#111;
-        flex-direction:column;
-        padding:30px;
-        display:none;
-    }
-
     nav ul.active{
         display:flex;
     }
@@ -1958,3 +1608,101 @@ HERO|CONTACT|LEFT|FORM|MAP|MOBILE|
 /* =========================
 HERO| INDEX
 ========================= */
+/* =========================
+FOOTER
+========================= */
+
+footer{
+    background:#0b0d10;
+    padding:70px 7% 30px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer-grid h3{
+    margin-bottom:20px;
+}
+
+.footer-grid p,
+.footer-grid li{
+    color:#bdbdbd;
+    line-height:2;
+    list-style:none;
+}
+
+.footer-grid a{
+    text-decoration:none;
+    color:#bdbdbd;
+}
+
+.footer-grid a:hover{
+    color:#c89b63;
+}
+
+.bottom{
+    margin-top:50px;
+    padding-top:25px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:15px;
+    color:#888;
+}
+
+/* MOBILE */
+
+@media(max-width:1100px){
+
+    .hero,
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .feature-grid,
+    .collection-grid,
+    .product-grid,
+    .testimonial-grid,
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .hero-text h1{
+        font-size:56px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .menu-toggle{
+        display:block;
+    }
+
+    nav ul.active{
+        display:flex;
+    }
+
+    .hero-text h1{
+        font-size:42px;
+    }
+
+    .section-title h2,
+    .about-text h2,
+    .cta h2{
+        font-size:34px;
+    }
+
+    .feature-grid,
+    .collection-grid,
+    .product-grid,
+    .testimonial-grid,
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+}
