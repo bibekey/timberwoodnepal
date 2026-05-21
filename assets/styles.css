@@ -147,7 +147,9 @@ HERO| INDEX
     color:#111;
 }
 
-.btn-primary:hover{
+.btn-primary:hover{.btn-primary:hover{
+    transform:translateY(-4px);
+}
     transform:translateY(-5px);
 }
 
@@ -862,7 +864,7 @@ CTA
 }
 
 /* =========================
-HERO|PORTFOLIO|PORTFOLIO GRID|STATS|CTA|LIGHTBOX|MOBILE
+PORTFOLIO|PORTFOLIO GRID|STATS|CTA|LIGHTBOX|MOBILE
 ========================= */
 
 .hero{
