@@ -86,7 +86,24 @@ nav ul li a:hover::after{
     cursor:pointer;
 }
 
+    .menu-toggle{
+        display:block;
+    }
 
+    nav ul{
+        position:absolute;
+        top:80px;
+        left:0;
+        width:100%;
+        background:#111;
+        flex-direction:column;
+        padding:30px;
+        display:none;
+    }
+
+    nav ul.active{
+        display:flex;
+    }
 /* HERO */
 
 .hero{
@@ -628,24 +645,7 @@ footer{
 
 @media(max-width:768px){
 
-    .menu-toggle{
-        display:block;
-    }
 
-    nav ul{
-        position:absolute;
-        top:80px;
-        left:0;
-        width:100%;
-        background:#111;
-        flex-direction:column;
-        padding:30px;
-        display:none;
-    }
-
-    nav ul.active{
-        display:flex;
-    }
 
     .hero{
         padding-top:120px;
