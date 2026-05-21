@@ -183,7 +183,7 @@ HERO| INDEX
 
 /* MOBILE VIEW */
 
-@media(max-width:991px){
+@media(max-width:1000px){
 
     .hero{
         grid-template-columns:1fr;
@@ -203,6 +203,7 @@ HERO| INDEX
 
     .hero-text h1{
         font-size:48px;
+        line-height:1.2;
     }
 
     .hero-text p{
@@ -219,12 +220,7 @@ HERO| INDEX
 
 }
 
-@media(max-width:900px){
-
-    .hero-text h1{
-        font-size:34px;
-        line-height:1.2;
-    }
+@media(max-width:768px){
 
     .hero-text p{
         font-size:14px;
@@ -383,7 +379,11 @@ ABOUT|STORY|STATS|TEAM|WHY US|CTA
 }
 
 .section-title p{
-    color:#bdbdbd;
+    opacity:.7;
+    color:#aaa;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
 }
 
 .team-grid{
@@ -733,10 +733,6 @@ CTA
         grid-template-columns:1fr 1fr;
     }
 
-    .hero-text h1{
-        font-size:56px;
-    }
-
 }
 
 @media(max-width:768px){
@@ -747,10 +743,6 @@ CTA
 
     nav ul.active{
         display:flex;
-    }
-
-    .hero-text h1{
-        font-size:42px;
     }
 
     .section-title h2,
@@ -1028,11 +1020,6 @@ PORTFOLIO GRID|STATS|CTA|LIGHTBOX|MOBILE
 }
 
 @media(max-width:600px){
-
-    .menu-toggle{
-        display:block;
-    }
-
     nav ul{
         position:absolute;
         top:80px;
@@ -1042,10 +1029,6 @@ PORTFOLIO GRID|STATS|CTA|LIGHTBOX|MOBILE
         flex-direction:column;
         padding:30px;
         display:none;
-    }
-
-    nav ul.active{
-        display:flex;
     }
 
     .hero h1{
@@ -1333,14 +1316,6 @@ BLOG|FEATURED|NEWSLETTER|MOBILE
 
 @media(max-width:900px){
 
-    .menu-toggle{
-        display:block;
-    }
-
-    nav ul.active{
-        display:flex;
-    }
-
     .hero h1{
         font-size:42px;
     }
@@ -1572,14 +1547,6 @@ CONTACT|LEFT|FORM|MAP|MOBILE|
 
 @media(max-width:768px){
 
-    .menu-toggle{
-        display:block;
-    }
-
-    nav ul.active{
-        display:flex;
-    }
-
     .footer-grid{
         grid-template-columns:1fr;
     }
@@ -1660,25 +1627,9 @@ footer{
         grid-template-columns:1fr 1fr;
     }
 
-    .hero-text h1{
-        font-size:56px;
-    }
-
 }
 
 @media(max-width:768px){
-
-    .menu-toggle{
-        display:block;
-    }
-
-    nav ul.active{
-        display:flex;
-    }
-
-    .hero-text h1{
-        font-size:42px;
-    }
 
     .section-title h2,
     .about-text h2,
