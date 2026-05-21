@@ -23,6 +23,10 @@ body{
     overflow-x:hidden;
 }
 
+/* =========================
+NAVBAR
+========================= */
+
 /* NAVBAR */
 
 nav{
@@ -30,16 +34,14 @@ nav{
     top:0;
     left:0;
     width:100%;
-    z-index:999;
-    background:rgba(10,10,10,.95);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(255,255,255,.08);
-
+    padding:18px 7%;
     display:flex;
     justify-content:space-between;
     align-items:center;
-
-    padding:18px 7%;
+    background:rgba(15,17,21,0.88);
+    backdrop-filter:blur(14px);
+    z-index:1000;
+    border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 .logo img{
@@ -51,25 +53,34 @@ nav{
 .logo span{
     color:#c89b63;
 }
-
 nav ul{
     display:flex;
     list-style:none;
-    gap:35px;
+    gap:30px;
 }
 
 nav ul li a{
+    position:relative;
     color:white;
     text-decoration:none;
-    transition:.3s;
-    font-size:15px;
 }
 
-nav ul li a:hover{
-    color:#c89b63;
+nav ul li a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0;
+    height:2px;
+    background:#c89b63;
+    transition:.4s;
 }
 
-.menu{
+nav ul li a:hover::after{
+    width:100%;
+}
+
+.menu-toggle{
     display:none;
     font-size:30px;
     cursor:pointer;
@@ -512,7 +523,9 @@ footer{
     <img src="img/home/LOGO.png" alt="TimberWood Logo">
 </div>
 
-    <div class="menu" onclick="toggleMenu()">☰</div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+        ☰
+    </div>
 
     <ul id="navLinks">
         <li><a href="index.html">Home</a></li>
@@ -525,7 +538,6 @@ footer{
     </ul>
 
 </nav>
-
 <!-- HERO -->
 
 <section class="hero">
@@ -908,10 +920,11 @@ footer{
 
 <script>
 
+/* MOBILE MENU */
+
 function toggleMenu(){
     document.getElementById("navLinks").classList.toggle("active");
 }
-
 </script>
 
 </body>
