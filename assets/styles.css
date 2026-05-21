@@ -401,7 +401,11 @@ ABOUT|STORY|STATS|TEAM|WHY US|CTA
 }
 
 .section-title p{
-    color:#bdbdbd;
+    opacity:.7;
+    color:#aaa;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
 }
 
 .team-grid{
@@ -446,6 +450,7 @@ ABOUT|STORY|STATS|TEAM|WHY US|CTA
 
 .why{
     padding:100px 7%;
+    background:#121212;
 }
 
 .why-grid{
@@ -524,7 +529,7 @@ ABOUT|STORY|STATS|TEAM|WHY US|CTA
 }
 
 /* =========================
-HERO|SERVICES|SECTION TITLE|SERVICES|WHY CHOOSE US|PROCESS|CTA|MOBILE
+SERVICES|SECTION TITLE|SERVICES|WHY CHOOSE US|PROCESS|CTA|MOBILE
 ========================= */
 
 .hero{
@@ -570,24 +575,6 @@ HERO|SERVICES|SECTION TITLE|SERVICES|WHY CHOOSE US|PROCESS|CTA|MOBILE
     color:#ccc;
     font-size:18px;
     line-height:1.8;
-}
-
-/* =========================
-SECTION TITLE
-========================= */
-
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.section-title h2{
-    font-size:42px;
-    margin-bottom:12px;
-}
-
-.section-title p{
-    opacity:.7;
 }
 
 /* =========================
@@ -656,17 +643,6 @@ SERVICES
 /* =========================
 WHY CHOOSE US
 ========================= */
-
-.why{
-    padding:100px 5%;
-    background:#121212;
-}
-
-.why-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-}
 
 .why-box{
     background:#1b1b1b;
@@ -747,9 +723,6 @@ CTA
 ========================= */
 
 .cta{
-    padding:100px 5%;
-
-    text-align:center;
 
     background:
     linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
@@ -864,7 +837,7 @@ CTA
 }
 
 /* =========================
-PORTFOLIO|PORTFOLIO GRID|STATS|CTA|LIGHTBOX|MOBILE
+PORTFOLIO GRID|STATS|CTA|LIGHTBOX|MOBILE
 ========================= */
 
 .hero{
@@ -918,25 +891,8 @@ PORTFOLIO|PORTFOLIO GRID|STATS|CTA|LIGHTBOX|MOBILE
     padding:100px 7%;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.section-title h2{
-    font-size:48px;
-    margin-bottom:15px;
-}
-
 .section-title span{
     color:#c89b63;
-}
-
-.section-title p{
-    color:#aaa;
-    max-width:700px;
-    margin:auto;
-    line-height:1.8;
 }
 
 /* PORTFOLIO GRID */
@@ -1091,8 +1047,6 @@ PORTFOLIO|PORTFOLIO GRID|STATS|CTA|LIGHTBOX|MOBILE
     url('SOFA SETS/SOFA SETS (5).png') center/cover;
 
     border-radius:35px;
-    padding:90px 50px;
-    text-align:center;
 }
 
 .cta h2{
@@ -1162,10 +1116,6 @@ PORTFOLIO|PORTFOLIO GRID|STATS|CTA|LIGHTBOX|MOBILE
 
     .hero h1{
         font-size:42px;
-    }
-
-    .section-title h2{
-        font-size:34px;
     }
 
     .cta h2{
@@ -1282,25 +1232,8 @@ HERO|BLOG|FEATURED|NEWSLETTER|MOBILE
     padding:100px 7%;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.section-title h2{
-    font-size:50px;
-    margin-bottom:15px;
-}
-
 .section-title span{
     color:#c89b63;
-}
-
-.section-title p{
-    color:#aaa;
-    max-width:700px;
-    margin:auto;
-    line-height:1.8;
 }
 
 /* BLOG GRID */
@@ -1544,10 +1477,6 @@ HERO|BLOG|FEATURED|NEWSLETTER|MOBILE
 
     .hero h1{
         font-size:42px;
-    }
-
-    .section-title h2{
-        font-size:35px;
     }
 
     .featured-content{
