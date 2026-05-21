@@ -872,6 +872,16 @@ function toggleMenu(){
     document.getElementById("navLinks").classList.toggle("active");
 }
 
+/* CLOSE MENU WHEN CLICKING LINK */
+
+const navLinks = document.querySelectorAll("#navLinks a");
+
+navLinks.forEach(link=>{
+    link.addEventListener("click", ()=>{
+        document.getElementById("navLinks").classList.remove("active");
+    });
+});
+
 </script>
 
 </body>
