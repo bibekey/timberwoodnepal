@@ -82,34 +82,48 @@ HERO
 ========================= */
 
 .hero{
-    min-height:55vh;
-
+    height:70vh;
+    position:relative;
     display:flex;
     align-items:center;
     justify-content:center;
-    flex-direction:column;
-
     text-align:center;
+    overflow:hidden;
+}
 
-    padding:120px 20px 60px;
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
 
     background:
     linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-    url('BED/BED (1).png');
+    url('BED/BED (1).png') center/cover;
 
-    background-size:cover;
-    background-position:center;
+    transform:scale(1.05);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    width:90%;
+    max-width:800px;
 }
 
 .hero h1{
-    font-size:55px;
-    margin-bottom:15px;
+    font-size:70px;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#c89b63;
 }
 
 .hero p{
-    max-width:700px;
+    color:#ccc;
+    font-size:18px;
     line-height:1.8;
-    opacity:.8;
 }
 
 /* =========================
@@ -545,12 +559,13 @@ MOBILE
 
 <section class="hero">
 
-<h1>Luxury Furniture Catalog</h1>
+    <div class="hero-content">
+        <h1>Luxury Furniture <span>Catalog</span></h1>
 
-<p>
-Modern premium wooden furniture collection for
-bedroom, living room, dining and office.
-</p>
+        <p>
+            Modern premium wooden furniture collection for bedroom, living room, dining and office.
+        </p>
+    </div>
 
 </section>
 
