@@ -756,17 +756,6 @@ CTA
         display:block;
     }
 
-    nav ul{
-        position:absolute;
-        top:80px;
-        left:0;
-        width:100%;
-        background:#111;
-        flex-direction:column;
-        padding:30px;
-        display:none;
-    }
-
     nav ul.active{
         display:flex;
     }
@@ -1359,17 +1348,6 @@ BLOG|FEATURED|NEWSLETTER|MOBILE
         display:block;
     }
 
-    nav ul{
-        position:absolute;
-        top:80px;
-        left:0;
-        width:100%;
-        background:#111;
-        flex-direction:column;
-        padding:30px;
-        display:none;
-    }
-
     nav ul.active{
         display:flex;
     }
@@ -1609,17 +1587,6 @@ CONTACT|LEFT|FORM|MAP|MOBILE|
         display:block;
     }
 
-    nav ul{
-        position:absolute;
-        top:80px;
-        left:0;
-        width:100%;
-        background:#111;
-        flex-direction:column;
-        padding:30px;
-        display:none;
-    }
-
     nav ul.active{
         display:flex;
     }
@@ -1714,17 +1681,6 @@ footer{
 
     .menu-toggle{
         display:block;
-    }
-
-    nav ul{
-        position:absolute;
-        top:80px;
-        left:0;
-        width:100%;
-        background:#111;
-        flex-direction:column;
-        padding:30px;
-        display:none;
     }
 
     nav ul.active{
