@@ -46,11 +46,9 @@ nav{
     display:block;
 }
 
-.logo span{
-    color:#c89b63;
-}
 nav ul{
     display:flex;
+    align-items:center;
     list-style:none;
     gap:30px;
 }
@@ -59,6 +57,13 @@ nav ul li a{
     position:relative;
     color:white;
     text-decoration:none;
+    font-size:15px;
+    font-weight:500;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#c89b63;
 }
 
 nav ul li a::after{
@@ -76,12 +81,65 @@ nav ul li a:hover::after{
     width:100%;
 }
 
+/* MENU BUTTON */
+
 .menu-toggle{
     display:none;
-    font-size:30px;
+    font-size:32px;
+    color:white;
     cursor:pointer;
+    user-select:none;
 }
 
+/* MOBILE NAVBAR */
+
+@media(max-width:900px){
+
+    .menu-toggle{
+        display:block;
+        z-index:10001;
+    }
+
+    nav{
+        padding:16px 6%;
+    }
+
+    nav ul{
+        position:fixed;
+        top:78px;
+        right:-100%;
+        width:280px;
+        height:calc(100vh - 78px);
+
+        background:#111;
+
+        flex-direction:column;
+        align-items:flex-start;
+
+        padding:40px 30px;
+        gap:25px;
+
+        transition:.4s ease;
+        border-left:1px solid rgba(255,255,255,0.08);
+    }
+
+    nav ul.active{
+        right:0;
+    }
+
+    nav ul li{
+        width:100%;
+    }
+
+    nav ul li a{
+        display:block;
+        width:100%;
+        font-size:17px;
+        padding-bottom:8px;
+        border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+}
 
 /* HERO */
 
@@ -806,16 +864,6 @@ footer{
 
 </footer>
 
-<!-- LIGHTBOX -->
-
-<div class="lightbox" id="lightbox">
-
-    <span class="close" onclick="closeImage()">×</span>
-
-    <img id="lightbox-img">
-
-</div>
-
 <script>
 
 /* MOBILE MENU */
@@ -823,7 +871,6 @@ footer{
 function toggleMenu(){
     document.getElementById("navLinks").classList.toggle("active");
 }
-
 
 </script>
 
