@@ -220,9 +220,31 @@ HERO| INDEX
 
 }
 
+
 @media(max-width:768px){
 
-    .hero-text p{
+    .menu-toggle{
+        display:block;
+    }
+
+    nav ul.active{
+        display:flex;
+    }
+
+    .section-title h2,
+    .about-text h2,
+    .cta h2{
+        font-size:34px;
+    }
+
+    .feature-grid,
+    .collection-grid,
+    .product-grid,
+    .testimonial-grid,
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+        .hero-text p{
         font-size:14px;
         line-height:1.7;
     }
@@ -244,8 +266,21 @@ HERO| INDEX
         filter:blur(120px);
     }
 
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .contact-hero h1{
+        font-size:38px;
+    }
+
+    .contact-form{
+        padding:30px 22px;
+    }
+
 }
 
+}
 /* =========================
 ABOUT|STORY|STATS|TEAM|WHY US|CTA
 ========================= */
@@ -735,31 +770,7 @@ CTA
 
 }
 
-@media(max-width:768px){
 
-    .menu-toggle{
-        display:block;
-    }
-
-    nav ul.active{
-        display:flex;
-    }
-
-    .section-title h2,
-    .about-text h2,
-    .cta h2{
-        font-size:34px;
-    }
-
-    .feature-grid,
-    .collection-grid,
-    .product-grid,
-    .testimonial-grid,
-    .footer-grid{
-        grid-template-columns:1fr;
-    }
-
-}
 
 /* =========================
 PORTFOLIO GRID|STATS|CTA|LIGHTBOX|MOBILE
@@ -1545,25 +1556,12 @@ CONTACT|LEFT|FORM|MAP|MOBILE|
 
 }
 
-@media(max-width:768px){
-
-    .footer-grid{
-        grid-template-columns:1fr;
-    }
-
-    .contact-hero h1{
-        font-size:38px;
-    }
-
-    .contact-form{
-        padding:30px 22px;
-    }
-
-}
-
 /* =========================
 HERO| INDEX
 ========================= */
+
+
+
 /* =========================
 FOOTER
 ========================= */
@@ -1625,24 +1623,6 @@ footer{
     .testimonial-grid,
     .footer-grid{
         grid-template-columns:1fr 1fr;
-    }
-
-}
-
-@media(max-width:768px){
-
-    .section-title h2,
-    .about-text h2,
-    .cta h2{
-        font-size:34px;
-    }
-
-    .feature-grid,
-    .collection-grid,
-    .product-grid,
-    .testimonial-grid,
-    .footer-grid{
-        grid-template-columns:1fr;
     }
 
 }
