@@ -82,25 +82,53 @@ nav ul li a:hover::after{
     cursor:pointer;
 }
 
-/* HERO */
+/* =========================
+HERO
+========================= */
 
-.contact-hero{
-    padding:160px 7% 80px;
+.hero{
+    height:70vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     text-align:center;
-    background:linear-gradient(to bottom,#15181d,#0f1115);
+    overflow:hidden;
 }
 
-.contact-hero h1{
-    font-size:62px;
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+    url('BED/BED (1).png') center/cover;
+
+    transform:scale(1.05);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    width:90%;
+    max-width:800px;
+}
+
+.hero h1{
+    font-size:70px;
+    line-height:1.1;
     margin-bottom:20px;
 }
 
-.contact-hero p{
-    max-width:700px;
-    margin:auto;
-    color:#bdbdbd;
-    line-height:1.9;
-    font-size:17px;
+.hero h1 span{
+    color:#c89b63;
+}
+
+.hero p{
+    color:#ccc;
+    font-size:18px;
+    line-height:1.8;
 }
 
 /* CONTACT SECTION */
@@ -361,13 +389,17 @@ footer{
 
 <!-- HERO -->
 
-<section class="contact-hero">
+<section class="hero">
 
-    <h1>TimberWood | Contact</h1>
+    <div class="hero-content">
 
-    <p>
-        Have questions about our furniture collections, pricing, custom orders, or interior solutions? Our team is ready to help you create your perfect space.
-    </p>
+        <h1>Our <span>Contact</span></h1>
+
+        <p>
+            Have questions about our furniture collections, pricing, custom orders, or interior solutions? Our team is ready to help you create your perfect space.
+        </p>
+
+    </div>
 
 </section>
 
