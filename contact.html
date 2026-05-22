@@ -288,23 +288,24 @@ footer{
 
 @media(max-width:768px){
 
-    .menu-toggle{
-        display:block;
-    }
-
     nav ul{
-        position:absolute;
+        position:fixed;
         top:80px;
-        left:0;
-        width:100%;
-        background:#111;
+        right:-100%;
+        width:260px;
+        height:100vh;
+        background:#fff;
         flex-direction:column;
-        padding:30px;
-        display:none;
+        padding:40px;
+        transition:.4s;
     }
 
     nav ul.active{
-        display:flex;
+        right:0;
+    }
+
+    .menu-btn{
+        display:block;
     }
 
     .footer-grid{

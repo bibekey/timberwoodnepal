@@ -409,30 +409,26 @@ MOBILE
 
 @media(max-width:768px){
 
-    .menu-btn{
-        display:block;
-    }
-
     nav ul{
-        position:absolute;
-        top:75px;
-        left:-100%;
-
-        width:100%;
-
-        background:#111;
-
+        position:fixed;
+        top:80px;
+        right:-100%;
+        width:260px;
+        height:100vh;
+        background:#fff;
         flex-direction:column;
-
-        padding:30px;
-
+        padding:40px;
         transition:.4s;
     }
 
     nav ul.active{
-        left:0;
+        right:0;
     }
 
+    .menu-btn{
+        display:block;
+    }
+    
     .hero h1{
         font-size:42px;
     }
