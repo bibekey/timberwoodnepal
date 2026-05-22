@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>TimberWood | Portfolio</title>
+<link rel="stylesheet" href="assets/styles.css">
 <link rel="icon" href="img/home/LOGO.png" type="image/x-icon">   <!-- font icons -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -499,21 +500,19 @@ footer{
 
 <nav>
 
-<div class="logo">
-    <img src="img/home/LOGO.png" alt="TimberWood Logo">
-</div>
+    <div class="logo"><img src="img/home/LOGO.png" alt="TimberWood Logo"></div>
 
-    <div class="menu" onclick="toggleMenu()">☰</div>
-
-    <ul id="navLinks">
+    <ul id="menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="blog.html">Blog</a></li>
         <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
 </nav>
 
@@ -821,63 +820,10 @@ footer{
 
 </footer>
 
-<!-- LIGHTBOX -->
 
-<div class="lightbox" id="lightbox">
 
-    <span class="close" onclick="closeImage()">×</span>
 
-    <img id="lightbox-img">
 
-</div>
-
-<script>
-
-/* MOBILE MENU */
-
-function toggleMenu(){
-    document.getElementById("navLinks").classList.toggle("active");
-}
-
-/* IMAGE VIEWER */
-
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-
-function openImage(src){
-    lightbox.style.display = "flex";
-    lightboxImg.src = src;
-}
-
-function closeImage(){
-    lightbox.style.display = "none";
-}
-
-/* TOUCH SWIPE */
-
-let startX = 0;
-
-lightbox.addEventListener('touchstart', e=>{
-    startX = e.touches[0].clientX;
-});
-
-lightbox.addEventListener('touchend', e=>{
-    let endX = e.changedTouches[0].clientX;
-
-    if(Math.abs(startX - endX) > 80){
-        closeImage();
-    }
-});
-
-/* CLICK OUTSIDE */
-
-lightbox.addEventListener('click', function(e){
-    if(e.target !== lightboxImg){
-        closeImage();
-    }
-});
-
-</script>
-
+<script src="assets/script.js"></script>
 </body>
 </html>
