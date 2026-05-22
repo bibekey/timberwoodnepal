@@ -376,19 +376,24 @@ footer{
 
 @media(max-width:768px){
 
-    .menu-toggle{
-        display:block;
+    nav ul{
+        position:fixed;
+        top:80px;
+        right:-100%;
+        width:260px;
+        height:100vh;
+        background:#fff;
+        flex-direction:column;
+        padding:40px;
+        transition:.4s;
     }
 
-    nav ul{
-        position:absolute;
-        top:80px;
-        left:0;
-        width:100%;
-        background:#111;
-        flex-direction:column;
-        padding:30px;
-        display:none;
+    nav ul.active{
+        right:0;
+    }
+
+    .menu-btn{
+        display:block;
     }
 
     nav ul.active{
