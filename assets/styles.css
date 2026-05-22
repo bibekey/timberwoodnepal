@@ -181,16 +181,20 @@ HERO| INDEX
     box-shadow:0 25px 60px rgba(0,0,0,0.45);
 }
 
-/* MOBILE VIEW */
-
 @media (max-width: 1000px) {
 
+    /* PREVENT OVERFLOW ISSUES */
+    body {
+        overflow-x: hidden;
+    }
+
+    /* HERO FIX */
     .hero {
         grid-template-columns: 1fr;
         gap: 40px;
-        padding: 120px 5% 70px;
+        padding: 100px 5% 60px;
         text-align: center;
-        height: 60vh;
+        height: auto; /* FIXED */
     }
 
     .hero-text {
@@ -202,7 +206,7 @@ HERO| INDEX
     }
 
     .hero-text h1 {
-        font-size: 48px;
+        font-size: 42px;
         line-height: 1.2;
     }
 
@@ -212,59 +216,71 @@ HERO| INDEX
 
     .hero-buttons {
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
     }
 
     .hero-image img {
-        border-radius: 25px;
+        border-radius: 20px;
+        max-width: 100%;
+        height: auto;
     }
 
-    .hero,
+    /* ABOUT FIX */
     .about {
         grid-template-columns: 1fr;
     }
 
+    /* GRID FIX → CHANGE TO 1 COLUMN (IMPORTANT) */
     .feature-grid,
     .collection-grid,
     .product-grid,
     .testimonial-grid,
     .footer-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr; /* FIXED */
+        gap: 20px;
     }
 
+    /* CTA */
     .cta h2 {
-        font-size: 38px;
+        font-size: 32px;
     }
 
+    /* FEATURED SECTION */
     .featured {
         grid-template-columns: 1fr;
     }
 
     .featured img {
-        height: 350px;
+        height: auto;
+        max-width: 100%;
     }
 
     .featured-content {
-        padding: 40px;
+        padding: 25px;
     }
 
     .featured-content h2 {
-        font-size: 34px;
+        font-size: 28px;
     }
 
+    /* NEWSLETTER */
     .newsletter h2 {
-        font-size: 38px;
+        font-size: 30px;
     }
 
     .newsletter-form {
         flex-direction: column;
+        gap: 10px;
     }
 
+    /* CONTACT */
     .contact-section {
         grid-template-columns: 1fr;
     }
 
     .contact-hero h1 {
-        font-size: 48px;
+        font-size: 40px;
     }
 }
 
