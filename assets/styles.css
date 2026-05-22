@@ -181,106 +181,70 @@ HERO| INDEX
     box-shadow:0 25px 60px rgba(0,0,0,0.45);
 }
 
-@media (max-width: 1000px) {
+/* MOBILE VIEW */
 
-    /* PREVENT OVERFLOW ISSUES */
-    body {
-        overflow-x: hidden;
+@media(max-width:1000px){
+
+    .hero{
+        grid-template-columns:1fr;
+        gap:40px;
+        padding:120px 5% 70px;
+        text-align:center;
+        height:60vh;
     }
 
-    /* HERO FIX */
-    .hero {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        padding: 100px 5% 60px;
-        text-align: center;
-        height: auto; /* FIXED */
+    .hero-text{
+        order:2;
     }
 
-    .hero-text {
-        order: 2;
+    .hero-image{
+        order:1;
     }
 
-    .hero-image {
-        order: 1;
+    .hero-text h1{
+        font-size:48px;
+        line-height:1.2;
     }
 
-    .hero-text h1 {
-        font-size: 42px;
-        line-height: 1.2;
+    .hero-text p{
+        max-width:100%;
     }
 
-    .hero-text p {
-        max-width: 100%;
+    .hero-buttons{
+        justify-content:center;
     }
 
-    .hero-buttons {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10px;
+    .hero-image img{
+        border-radius:25px;
     }
 
-    .hero-image img {
-        border-radius: 20px;
-        max-width: 100%;
-        height: auto;
+    .hero,
+    .about{
+        grid-template-columns:1fr;
     }
 
-    /* ABOUT FIX */
-    .about {
-        grid-template-columns: 1fr;
-    }
-
-    /* GRID FIX → CHANGE TO 1 COLUMN (IMPORTANT) */
     .feature-grid,
     .collection-grid,
     .product-grid,
     .testimonial-grid,
-    .footer-grid {
-        grid-template-columns: 1fr; /* FIXED */
-        gap: 20px;
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
     }
 
-    /* CTA */
-    .cta h2 {
-        font-size: 32px;
+    .hero h1{
+        font-size:42px;
     }
 
-    /* FEATURED SECTION */
-    .featured {
-        grid-template-columns: 1fr;
+    .cta h2{
+        font-size:38px;
     }
 
-    .featured img {
-        height: auto;
-        max-width: 100%;
+    .featured{
+        grid-template-columns:1fr;
     }
 
-    .featured-content {
-        padding: 25px;
-    }
-
-    .featured-content h2 {
-        font-size: 28px;
-    }
-
-    /* NEWSLETTER */
-    .newsletter h2 {
-        font-size: 30px;
-    }
-
-    .newsletter-form {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    /* CONTACT */
-    .contact-section {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-hero h1 {
-        font-size: 40px;
+    .featured img{
+        height:350px;
     }
 }
 
@@ -373,26 +337,6 @@ HERO| INDEX
     .cta{
         padding:70px 25px;
     }
-
-    .hero h1{
-        font-size:34px;
-    }
-
-    .hero p{
-        font-size:15px;
-    }
-
-    .blog-content h3{
-        font-size:22px;
-    }
-
-    .featured-content h2{
-        font-size:28px;
-    }
-
-    .newsletter{
-        padding:70px 25px;
-    }    
 
 }
 /* =========================
@@ -1354,6 +1298,56 @@ BLOG|FEATURED|NEWSLETTER|MOBILE
 }
 
 
+
+
+@media(max-width:900px){
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .featured-content{
+        padding:40px;
+    }
+
+    .featured-content h2{
+        font-size:34px;
+    }
+
+    .newsletter h2{
+        font-size:38px;
+    }
+
+    .newsletter-form{
+        flex-direction:column;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .blog-content h3{
+        font-size:22px;
+    }
+
+    .featured-content h2{
+        font-size:28px;
+    }
+
+    .newsletter{
+        padding:70px 25px;
+    }
+
+}
+
 /* =========================
 HERO| ARTICLE
 ========================= */
@@ -1517,6 +1511,26 @@ CONTACT|LEFT|FORM|MAP|MOBILE|
     border:none;
 }
 
+
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+    .contact-section{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .contact-hero h1{
+        font-size:48px;
+    }
+
+}
+
 /* =========================
 HERO| INDEX
 ========================= */
@@ -1569,3 +1583,21 @@ footer{
     color:#888;
 }
 
+/* MOBILE */
+
+@media(max-width:1100px){
+
+    .hero,
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .feature-grid,
+    .collection-grid,
+    .product-grid,
+    .testimonial-grid,
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
