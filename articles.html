@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Blog Article | TimberWood</title>
+<link rel="stylesheet" href="assets/styles.css">
 <link rel="icon" href="img/home/LOGO.png" type="image/x-icon">   <!-- font icons -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -36,6 +37,12 @@ nav{
     padding:18px 7%;
     z-index:1000;
     box-shadow:0 5px 20px rgba(0,0,0,0.05);
+}
+
+.logo img{
+    height:40px;
+    width:auto;
+    display:block;
 }
 
 .logo{
@@ -359,15 +366,15 @@ footer{
 
 <nav>
 
-    <div class="logo">TimberWood</div>
+    <div class="logo"><img src="img/home/LOGO.png" alt="TimberWood Logo"></div>
 
     <ul id="menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="blog.html">Blog</a></li>
         <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
 
@@ -567,13 +574,10 @@ footer{
 
 </footer>
 
-<script>
 
-function toggleMenu(){
-    document.getElementById("menu").classList.toggle("active");
-}
 
-</script>
 
+
+<script src="assets/script.js"></script>
 </body>
 </html>

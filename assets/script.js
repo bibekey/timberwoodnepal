@@ -1,5 +1,5 @@
 /* MOBILE MENU */
 
 function toggleMenu(){
-    document.getElementById("navLinks").classList.toggle("active");
+    document.getElementById("menu").classList.toggle("active");
 }
