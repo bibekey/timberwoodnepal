@@ -343,49 +343,66 @@ IMAGE VIEWER
 }
 
 
-/* FOOTER */
+/* =========================
+FOOTER
+========================= */
 
 footer{
-    background:#0b0d10;
-    padding:70px 7% 30px;
+    background:#0b0b0b;
+    padding:70px 5% 30px;
 }
 
 .footer-grid{
     display:grid;
-    grid-template-columns:2fr 1fr 1fr 1fr;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:40px;
 }
 
-.footer-grid h3{
-    color:#fff;
-    margin-bottom:20px;
+footer h2{
+    margin-bottom:18px;
 }
 
-.footer-grid p,
-.footer-grid li{
-    color:#bdbdbd;
-    line-height:2;
+footer p,
+footer li{
+    opacity:.7;
+    line-height:1.9;
     list-style:none;
 }
 
-.footer-grid a{
-    text-decoration:none;
-    color:#bdbdbd;
+footer input{
+    width:100%;
+    padding:14px;
+
+    border:none;
+    border-radius:12px;
+
+    margin:15px 0;
 }
 
-.footer-grid a:hover{
-    color:#c89b63;
+footer button{
+    padding:13px 24px;
+
+    border:none;
+    border-radius:12px;
+
+    background:#c89b63;
+    color:#000;
+
+    font-weight:600;
+    cursor:pointer;
 }
 
 .bottom{
     margin-top:50px;
     padding-top:25px;
-    border-top:1px solid rgba(255,255,255,0.08);
+
+    border-top:1px solid rgba(255,255,255,.08);
+
     display:flex;
     justify-content:space-between;
     flex-wrap:wrap;
-    gap:15px;
-    color:#888;
+
+    opacity:.7;
 }
 
 /* =========================
@@ -394,24 +411,27 @@ MOBILE
 
 @media(max-width:768px){
 
+    .menu-btn{
+        display:block;
+    }
+
     nav ul{
-        position:fixed;
-        top:80px;
-        right:-100%;
-        width:260px;
-        height:100vh;
-        background:#fff;
+        position:absolute;
+        top:75px;
+        left:-100%;
+
+        width:100%;
+
+        background:#111;
+
         flex-direction:column;
-        padding:40px;
+        padding:30px;
+
         transition:.4s;
     }
 
     nav ul.active{
-        right:0;
-    }
-
-    .menu-btn{
-        display:block;
+        left:0;
     }
 
     .hero h1{
@@ -5951,75 +5971,75 @@ onclick="openViewer(this.querySelector('img').src)">
 
 <footer>
 
-    <div class="footer-grid">
+<div class="footer-grid">
 
-        <div>
+<div>
 
-            <div class="logo">
-                Timber<span>Wood</span>
-            </div>
+<h2>Newsletter</h2>
 
-            <p style="margin-top:20px;">
-                Premium furniture brand delivering elegant and luxurious furniture collections for modern homes and offices.
-            </p>
+<p>
+Get latest furniture updates and offers.
+</p>
 
-        </div>
+<input type="email" placeholder="Enter email">
 
-        <div>
+<button>Subscribe</button>
 
-            <h3>Company</h3>
+</div>
 
-            <ul>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+<div>
 
-        </div>
+<h2>Showroom</h2>
 
-        <div>
+<p>
+Biratnagar Main Road<br><br>
+Sunday - Friday<br><br>
+9705020251 / 9708000000
+</p>
 
-            <h3>Products</h3>
+</div>
 
-            <ul>
-                <li><a href="#">Beds</a></li>
-                <li><a href="#">Sofa Sets</a></li>
-                <li><a href="#">Dining Tables</a></li>
-                <li><a href="#">Wardrobes</a></li>
-            </ul>
+<div>
 
-        </div>
+<h2>Useful Links</h2>
 
-        <div>
+<ul>
+<li>About Us</li>
+<li>Portfolio</li>
+<li>Contact</li>
+<li>Blog</li>
+</ul>
 
-            <h3>Contact</h3>
+</div>
 
-            <ul>
-                <li>Biratnagar, Nepal</li>
-                <li>9705020251 / 9708000000</li>
-                <li>timberwood@gmail.com</li>
-            </ul>
+</div>
 
-        </div>
+<div class="bottom">
 
-    </div>
+<div>
+© 2026 TimberWood Pvt Ltd
+</div>
 
-    <div class="bottom">
+<div>
+Privacy Policy | Terms
+</div>
 
-        <div>
-            © 2026 TimberWood. All Rights Reserved.
-        </div>
-
-        <div>
-            Privacy Policy | Terms & Conditions
-        </div>
-
-    </div>
+</div>
 
 </footer>
 
 <script>
+
+/* =========================
+MOBILE MENU
+========================= */
+
+const menuBtn = document.getElementById('menuBtn');
+const navMenu = document.querySelector('nav ul');
+
+menuBtn.onclick = () =>{
+    navMenu.classList.toggle('active');
+};
 
 /* =========================
 FILTER
