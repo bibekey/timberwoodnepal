@@ -7,7 +7,7 @@ function toggleMenu(){
 
 
 
-/* HERO */
+/* HERO INDEX */
 
 const slides = document.querySelectorAll(".hero-slide");
 const dots = document.querySelectorAll(".dot");
